@@ -5,15 +5,15 @@
 <title>Calculator</title>
 
 <style>
-body {
+body form {
 	display: inline;
 }
 </style>
 
 <script>
-var operand1;
-var operand2;
-var operation;
+var operand1 = 0.0;
+var operand2 = 0.0;
+var operation = "";
 
 document.getElementById("operand1").addEventListener("change", function(event){
 	operand1 = event.target.value;
@@ -65,7 +65,7 @@ function pickOperation() {
 </head>
 
 <body>
-	<form name="Calculator">
+	<form name="Calculator" action="#">
 		<input type="text" id="operand1" name="operand1">
 		<input type="radio" name="operation" value="addition" checked>+
 		<input type="radio" name="operation" value="subtraction">-
