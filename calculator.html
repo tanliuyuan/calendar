@@ -45,7 +45,7 @@ function calculate() {
 			document.getElementById("result").innerHTML = operand1 * operand2;
 			break;
 		case "division":
-			if operand2 != 0
+			if (operand2 != 0)
 				document.getElementById("result").innerHTML = operand1 / operand2;
 			else
 				document.getElementById("result").innerHTML = "Invalid operation: divisor cannot be zero.";
