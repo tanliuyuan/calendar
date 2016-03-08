@@ -27,7 +27,7 @@ body form {
 <script>
 var operand1 = 0.0;
 var operand2 = 0.0;
-var operation = "";
+var operation = "addition";
 
 document.getElementById("operand1").addEventListener("change", function(event){
 	operand1 = event.target.value;
@@ -39,15 +39,12 @@ document.getElementById("operand2").addEventListener("change", function(event){
 	calculate();
 }, false);
 
-document.getElementsByName("operation").addEventListener("change", function(event){
-	operation = event.target.value;
-	calculate();
-}, false);
-
 function calculate() {
-	console.log(operand1);
-	console.log(operation);
-	console.log(operand2);
+	operations = document.getElementsByName("operation");
+	for (var i = 0; i < operations.length; i++) {
+		if (operations[i].checked)
+			operation = operations[i].value;
+	}
 	switch (operation) {
 		case "addition":
 			document.getElementById("result").innerHTML = operand1 + operand2;
@@ -68,11 +65,7 @@ function calculate() {
 }
 
 function pickOperation() {
-	operations = document.getElementsByName("operation");
-	for (var i = 0; i < operations.length; i++) {
-		if (operations[i].checked)
-			return operations[i].value
-	}
+	
 }
 </script>
 
