@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Calculator</title>
+
+<style>
+body {
+	display: inline;
+}
+</style>
+
+<script>
+var operand1;
+var operand2;
+var operation;
+
+document.getElementById("operand1").addEventListener("change", function(event){
+	operand1 = event.target.value;
+}, false);
+
+document.getElementById("operand2").addEventListener("change", function(event){
+	operand2 = event.target.value;
+}, false);
+
+document.getElementsByName("operation").addEventListener("change", function(event){
+	operation = event.target.value;
+}, false);
+
+document.getElementById("equals_button").addEventListener("click", function(event){
+	switch (operation) {
+		case "addition":
+			document.getElementById("result").innerHTML = operand1 + operand2;
+			break;
+		case "subtraction":
+			document.getElementById("result").innerHTML = operand1 - operand2;
+			break;
+		case "multiplication":
+			document.getElementById("result").innerHTML = operand1 * operand2;
+			break;
+		case "division":
+			if operand2 != 0
+				document.getElementById("result").innerHTML = operand1 / operand2;
+			else
+				document.getElementById("result").innerHTML = "Invalid operation: divisor cannot be zero.";
+			break;
+	}
+}, false);
+
+function pickOperation() {
+	operations = document.getElementsByName("operation");
+	for (var i = 0; i < operations.length; i++) {
+		if (operations[i].checked)
+			return operations[i].value
+	}
+}
+</script>
+
+</head>
+
+<body>
+	<form name="Calculator">
+		<input type="text" id="operand1" name="operand1">
+		<input type="radio" name="operation" value="addition" checked>+
+		<input type="radio" name="operation" value="subtraction">-
+		<input type="radio" name="operation" value="multiplication">×
+		<input type="radio" name="operation" value="division">÷
+		<input type="text" id="operand2" name="operand2">
+	</form>
+	<button id="equals_button">=</button>
+	<span id="result"></span>
+</body>
+
+</html>
