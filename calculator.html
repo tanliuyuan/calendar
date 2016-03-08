@@ -17,17 +17,23 @@ var operation;
 
 document.getElementById("operand1").addEventListener("change", function(event){
 	operand1 = event.target.value;
+	calculate();
 }, false);
 
 document.getElementById("operand2").addEventListener("change", function(event){
 	operand2 = event.target.value;
+	calculate();
 }, false);
 
 document.getElementsByName("operation").addEventListener("change", function(event){
 	operation = event.target.value;
+	calculate();
 }, false);
 
-document.getElementById("equals_button").addEventListener("click", function(event){
+function calculate() {
+	console.log(operand1);
+	console.log(operation);
+	console.log(operand2);
 	switch (operation) {
 		case "addition":
 			document.getElementById("result").innerHTML = operand1 + operand2;
@@ -67,7 +73,7 @@ function pickOperation() {
 		<input type="radio" name="operation" value="division">÷
 		<input type="text" id="operand2" name="operand2">
 	</form>
-	<button id="equals_button">=</button>
+	<span>=</span>
 	<span id="result"></span>
 </body>
 
