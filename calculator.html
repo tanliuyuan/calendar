@@ -28,24 +28,37 @@ body form {
 var operand1 = 0.0;
 var operand2 = 0.0;
 var operation = "addition";
+var operations = document.getElementsByName("operation");
 
+// Listen to "change" event on the first text field.
 document.getElementById("operand1").addEventListener("change", function(event){
 	operand1 = parseFloat(event.target.value);
 	calculate();
 }, false);
 
+// Listen to "change" event on the second text field.
 document.getElementById("operand2").addEventListener("change", function(event){
 	operand2 = parseFloat(event.target.value);
 	calculate();
 }, false);
 
-function calculate() {
-	// Find out which radio button is selected
-	operations = document.getElementsByName("operation");
+// Listen to "change" events on all radio buttons
+for (var i = 0; i < operations.length; i++) {
+	operations[i].addEventListener("change", function(event){
+		calculate();
+	}, false);
+}
+	
+// Find out which radio button is selected
+function pickOperation() {
 	for (var i = 0; i < operations.length; i++) {
 		if (operations[i].checked)
 			operation = operations[i].value;
 	}
+}
+
+function calculate() {
+	pickOperation();
 	// Find out which operation to perform
 	switch (operation) {
 		case "addition":
@@ -65,10 +78,6 @@ function calculate() {
 				document.getElementById("result").innerHTML = "Invalid operation: divisor cannot be zero.";
 			break;
 	}
-}
-
-function pickOperation() {
-	
 }
 </script>
 
