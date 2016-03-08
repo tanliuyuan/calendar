@@ -9,6 +9,20 @@ body form {
 	display: inline;
 }
 </style>
+</head>
+
+<body>
+	<form name="Calculator" action="#">
+		<input type="text" id="operand1" name="operand1" value="0">
+		<input type="radio" name="operation" value="addition" checked>+
+		<input type="radio" name="operation" value="subtraction">-
+		<input type="radio" name="operation" value="multiplication">×
+		<input type="radio" name="operation" value="division">÷
+		<input type="text" id="operand2" name="operand2" value="0">
+	</form>
+	<span>=</span>
+	<span id="result"></span>
+</body>
 
 <script>
 var operand1 = 0.0;
@@ -61,20 +75,5 @@ function pickOperation() {
 	}
 }
 </script>
-
-</head>
-
-<body>
-	<form name="Calculator" action="#">
-		<input type="text" id="operand1" name="operand1">
-		<input type="radio" name="operation" value="addition" checked>+
-		<input type="radio" name="operation" value="subtraction">-
-		<input type="radio" name="operation" value="multiplication">×
-		<input type="radio" name="operation" value="division">÷
-		<input type="text" id="operand2" name="operand2">
-	</form>
-	<span>=</span>
-	<span id="result"></span>
-</body>
 
 </html>
