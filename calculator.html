@@ -30,21 +30,23 @@ var operand2 = 0.0;
 var operation = "addition";
 
 document.getElementById("operand1").addEventListener("change", function(event){
-	operand1 = event.target.value;
+	operand1 = parseFloat(event.target.value);
 	calculate();
 }, false);
 
 document.getElementById("operand2").addEventListener("change", function(event){
-	operand2 = event.target.value;
+	operand2 = parseFloat(event.target.value);
 	calculate();
 }, false);
 
 function calculate() {
+	// Find out which radio button is selected
 	operations = document.getElementsByName("operation");
 	for (var i = 0; i < operations.length; i++) {
 		if (operations[i].checked)
 			operation = operations[i].value;
 	}
+	// Find out which operation to perform
 	switch (operation) {
 		case "addition":
 			document.getElementById("result").innerHTML = operand1 + operand2;
@@ -56,6 +58,7 @@ function calculate() {
 			document.getElementById("result").innerHTML = operand1 * operand2;
 			break;
 		case "division":
+			// Check if the divisor is 0
 			if (operand2 != 0)
 				document.getElementById("result").innerHTML = operand1 / operand2;
 			else
