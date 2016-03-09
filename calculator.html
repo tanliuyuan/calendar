@@ -9,46 +9,35 @@ body form {
 	display: inline;
 }
 </style>
-</head>
 
-<body>
-	<form name="Calculator" action="#">
-		<input type="text" id="operand1" name="operand1" value=0>
-		<input type="radio" name="operation" value="addition" checked>+
-		<input type="radio" name="operation" value="subtraction">-
-		<input type="radio" name="operation" value="multiplication">×
-		<input type="radio" name="operation" value="division">÷
-		<input type="text" id="operand2" name="operand2" value=0>
-	</form>
-	<span>=</span>
-	<span id="result"></span>
-	
 <!-- JS -->
 <script type="text/javascript">
-var operand1 = 0.0;
-var operand2 = 0.0;
-var operation = "addition";
-var operations = document.getElementsByName("operation");
+document.addEventListener("DOMContentLoaded", function(){
+	var operand1 = 0.0;
+	var operand2 = 0.0;
+	var operation = "addition";
+	var operations = document.getElementsByName("operation");
 
-// Listen to "change" event on the first text field.
-document.getElementById("operand1").addEventListener("change", function(event){
-	operand1 = parseFloat(event.target.value);
-	calculate();
-}, false);
-
-// Listen to "change" event on the second text field.
-document.getElementById("operand2").addEventListener("change", function(event){
-	operand2 = parseFloat(event.target.value);
-	calculate();
-}, false);
-
-// Listen to "change" events on all radio buttons
-for (var i = 0; i < operations.length; i++) {
-	operations[i].addEventListener("change", function(event){
+	// Listen to "change" event on the first text field.
+	document.getElementById("operand1").addEventListener("change", function(event){
+		operand1 = parseFloat(event.target.value);
 		calculate();
 	}, false);
-}
-	
+
+	// Listen to "change" event on the second text field.
+	document.getElementById("operand2").addEventListener("change", function(event){
+		operand2 = parseFloat(event.target.value);
+		calculate();
+	}, false);
+
+	// Listen to "change" events on all radio buttons
+	for (var i = 0; i < operations.length; i++) {
+		operations[i].addEventListener("change", function(event){
+			calculate();
+		}, false);
+	}
+}, false);
+
 // Find out which radio button is selected
 function pickOperation() {
 	for (var i = 0; i < operations.length; i++) {
@@ -81,6 +70,19 @@ function calculate() {
 }
 </script>
 <!-- END JS -->
+</head>
+
+<body>
+	<form name="Calculator" action="#">
+		<input type="text" id="operand1" name="operand1" value=0>
+		<input type="radio" name="operation" value="addition" checked>+
+		<input type="radio" name="operation" value="subtraction">-
+		<input type="radio" name="operation" value="multiplication">×
+		<input type="radio" name="operation" value="division">÷
+		<input type="text" id="operand2" name="operand2" value=0>
+	</form>
+	<span>=</span>
+	<span id="result"></span>
 </body>
 
 </html>
