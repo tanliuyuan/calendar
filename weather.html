@@ -40,7 +40,9 @@ function parseResponse(event){
 		<div class="weather-temp"></div>
 		<img class="weather-tomorrow" />
 		<img class="weather-dayaftertomorrow" />
-		<button id="update">Update</button>
+		<div>
+			<button id="update">Update</button>
+		</div>
 		<script>
 			document.getElementById("update").addEventListener("click", fetchWeather(), false);
 		</script>
