@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Weather Widget</title>
+
+<style>
+
+<link rel="stylesheet" type="text/css" href="http://classes.engineering.wustl.edu/cse330/content/weather.css">
+
+body form {
+	display: inline;
+}
+
+</style>
+
+<!-- JS -->
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", fetchWeather, false);
+
+function fetchWeather() {
+	// Make AJAX request.
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open("GET", "http://classes.engineering.wustl.edu/cse330/content/weather_json.php", true);
+	xmlHttp.addEventListener("load", parseResponse, false);
+	xmlHttp.send(null);
+}
+
+function parseResponse(event){
+	var weatherData = JSON.parse(event.target.responseText);
+	document.getElementById("weatherWidget").getElementsByClassName("weather-loc")[0].innerHTML += "<strong>" + weatherData.location.city + " </strong>" + weatherData.location.state;
+	document.getElementById("weatherWidget").getElementsByClassName("weather-humidity")[0].innerHTML += weatherData.atmosphere.humidity + "% ";
+	document.getElementById("weatherWidget").getElementsByClassName("weather-temp")[0].innerHTML += "Currently " + weatherData.current.temp;
+	document.getElementById("weatherWidget").getElementsByClassName("weather-tomorrow")[0].innerHTML += ;
+	document.getElementById("weatherWidget").getElementsByClassName("weather-dayaftertomorrow")[0].innerHTML += ;
+}
+
+</script>
+<!-- END JS -->
+</head>
+
+<body>
+	<div class="weather" id="weatherWidget">
+		<div class="weather-loc"></div>
+		<div class="weather-humidity"></div>
+		<div class="weather-temp"></div>
+		<img class="weather-tomorrow" />
+		<img class="weather-dayaftertomorrow" />
+	</div>
+</body>
+
+</html>
