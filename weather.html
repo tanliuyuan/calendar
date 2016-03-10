@@ -25,8 +25,8 @@ function parseResponse(event){
 	document.getElementById("weatherWidget").getElementsByClassName("weather-loc")[0].innerHTML += "<strong>" + weatherData.location.city + " </strong>" + weatherData.location.state;
 	document.getElementById("weatherWidget").getElementsByClassName("weather-humidity")[0].innerHTML += weatherData.atmosphere.humidity;
 	document.getElementById("weatherWidget").getElementsByClassName("weather-temp")[0].innerHTML += weatherData.current.temp;
-	document.getElementById("weatherWidget").getElementsByClassName("weather-tomorrow")[0].innerHTML += "";
-	document.getElementById("weatherWidget").getElementsByClassName("weather-dayaftertomorrow")[0].innerHTML += "";
+	document.getElementById("weatherWidget").getElementsByClassName("weather-tomorrow")[0].setAttribute("src", "http://us.yimg.com/i/us/nws/weather/gr/"+ weatherData.tomorrow.code +"ds.png");
+	document.getElementById("weatherWidget").getElementsByClassName("weather-dayaftertomorrow")[0].setAttribute("src", "http://us.yimg.com/i/us/nws/weather/gr/"+ weatherData.dayafter.code +"ds.png");
 }
 
 </script>
@@ -40,6 +40,10 @@ function parseResponse(event){
 		<div class="weather-temp"></div>
 		<img class="weather-tomorrow" />
 		<img class="weather-dayaftertomorrow" />
+		<button id="update">Update</button>
+		<script>
+			document.getElementById("update").addEventListener("click", fetchWeather(), false);
+		</script>
 	</div>
 </body>
 
