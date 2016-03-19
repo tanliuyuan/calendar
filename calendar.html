@@ -29,12 +29,25 @@
 <!-- END FullCalendar -->
 
 <script>
-$(document).ready(function() {
+$(document).ready(function () {
     // Initialize calendar
+    "use strict";
     $('#calendar').fullCalendar({
         aspectRatio: 1.78,
         fixedWeekCount: false
-    })
+    });
+    // Log in with AJAX
+    $('#login').click(function (event) {
+        event.preventDefault();
+    }, false);
+    // Bring up sign up form
+    $('#signup_form').click(function (event) {
+        event.preventDefault();
+    }, false);
+    // Sign up with AJAX
+    $('#signup').click(function (event) {
+        event.preventDefault();
+    }, false);
 });
 </script>
 </head>
@@ -43,7 +56,7 @@ $(document).ready(function() {
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="collapse navbar-collapse">
-			<form class="navbar-form navbar-right">
+			<form class="navbar-form navbar-right" id="login_form" action="#">
         		<div class="form-group">
         			<label for="username">Username</label>
           			<input type="text" class="form-control" id="username" placeholder="Username">
@@ -52,12 +65,55 @@ $(document).ready(function() {
     				<label for="password">Password</label>
     				<input type="password" class="form-control" id="password" placeholder="Password">
   				</div>
-        		<button type="submit" class="btn btn-default">Login</button>
+        		<button type="submit" class="btn btn-default" id="login">Login</button>
         	</form>
+        		<button type="button" class="navbar-right btn btn-default" id="signup">Sign Up</button>
       	</div>
     </div>
 </nav>
 <div id="calendar">
 </div>
+<!-- Signup form -->
+<div class="container modal fade" id="signup_form">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+		</div>
+		<div class="modal-body">
+			<div id="signup_panel" role="tabpanel" class="tab-pane fade in active">
+				<form id="signup_form" class="col-md-6" action="#" method="post">
+					<div class="form-group">
+						<label for="signup_email">Username</label>
+						<input type="text" id="signup_email" class="form-control" placeholder="Your email address" required>
+					</div>
+					<div class="form-group">
+						<label for="signup_first_name">First Name</label>
+						<input type="text" id="signup_first_name" class="form-control" placeholder="First Name" required>
+					</div>
+					<div class="form-group">
+						<label for="signup_first_name">Last Name</label>
+						<input type="text" id="signup_last_name" class="form-control" placeholder="Last Name" required>
+					</div>
+					<div class="form-group">
+						<label for="signup_password">Password</label>
+						<input type="password" id="signup_password" class="form-control" placeholder="Password" required>
+					</div>
+					<div class="form-group">
+						<label for="confirm_password">Confirm Password</label>
+						<input type="password" id="confirm_password" class="form-control" placeholder="Confirm Password" required>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+							<button id="signup_submit" class="btn btn-lg btn-primary" type="submit">Sign up</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+      		</div>
+		</div>
+	</div>
+</div>
+<!-- END signup form -->
 </body>
 </html>
