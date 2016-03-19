@@ -39,11 +39,12 @@ $(document).ready(function () {
     // Log in with AJAX
     $('#login').click(function (event) {
         event.preventDefault();
+        console.log("login");
     }, false);
     // Bring up sign up form
     $('#signup').click(function (event) {
         event.preventDefault();
-        console.log('signup');
+        console.log("signup");
         $('#signup_form').modal('show');
     }, false);
     // Sign up with AJAX
