@@ -45,7 +45,7 @@ $(document).ready(function () {
     $('#signup').click(function (event) {
         event.preventDefault();
         console.log("signup");
-        $('#signup_form').modal('show');
+        $('#signup_modal').modal('show');
     });
     // Sign up with AJAX
     $('#signup_submit').click(function (event) {
@@ -78,7 +78,7 @@ $(document).ready(function () {
 </div>
 
 <!-- Signup form -->
-<div class="container modal fade" id="signup_form">
+<div class="container modal fade" id="signup_modal">
 	<div class="modal-content col-md-6">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
