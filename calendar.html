@@ -55,7 +55,7 @@ $(document).ready(function () {
         // Validate user inputs
         var usernameRegEx = /^[A-Za-z0-9_\-]{3,16}$/;
         var nameRegEx = /[A-Za-z\ ]{1,50}/;
-        var passwordRegEx = /^[A-Za-z0-9_\-]{3,16}$/;
+        var passwordRegEx = /^[A-Za-z0-9_\-]{6,18}$/;
         if (!usernameRegEx.test($('#signup_username').val())) {
             alert("Your username is not valid. A valid username is between 3 to 16 characters. Only characters A-Z, a-z, 0-9, '-', and '_' are  acceptable.");
             $('#signup_username').focus();
