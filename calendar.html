@@ -84,13 +84,13 @@ $(document).ready(function () {
             last_name: $("#signup_last_name").val(),
             password: $("#signup_password").val()
         }).done(function (data) {
-        	console.log(data);
+            console.log(data);
             if (data.responseJSON.error) {
                 alert("Error:" + data.responseJSON.error);
             } else {
                 $('#signup_modal').modal('hide');
             }
-        }).fail(function err {
+        }).fail(function (err) {
             alert("Error: " + err);
         });
     });
