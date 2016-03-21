@@ -54,30 +54,30 @@ $(document).ready(function () {
         event.preventDefault();
         // Validate user inputs
         var usernameRegEx = /^[A-Za-z0-9_\-]{3,16}$/;
-        var nameRegEx = /^([a-z]+[,.]?[\ ]?|[a-z]+[\'\-]?){1,50}$/;
+        var nameRegEx = /[A-Za-z\ \'\-]{1,50}/;
         var passwordRegEx = /^[A-Za-z0-9_\-]{6,18}$/;
         if (!usernameRegEx.test($('#signup_username').val())) {
-            alert("Your username is not valid. A valid username is between 3 to 16 characters. Only characters A-Z, a-z, 0-9, '-', and '_' are  acceptable.");
+            alert('Your username is not valid. A valid username is between 3 to 16 characters. Only characters A-Z, a-z, 0-9, "-", and "_" are  acceptable.');
             $('#signup_username').focus();
             return;
         }
         if (!nameRegEx.test($('#signup_first_name').val())) {
-            alert("Your first name is not valid. A valid first name is between 1 to 50 characters. Only characters A-Z, a-z, and ' ' are  acceptable.");
+            alert('Your first name is not valid. A valid first name is between 1 to 50 characters. Only characters A-Z, a-z, "\'", "-", and " " are  acceptable.');
             $('#signup_first_name').focus();
             return;
         }
         if (!nameRegEx.test($('#signup_last_name').val())) {
-            alert("Your last name is not valid. A valid last name is between 1 to 50 characters. Only characters A-Z, a-z, and ' ' are  acceptable.");
+            alert('Your last name is not valid. A valid last name is between 1 to 50 characters. Only characters A-Z, a-z, and " " are  acceptable.');
             $('#signup_last_name').focus();
             return;
         }
         if (!passwordRegEx.test($('#signup_password').val())) {
-            alert("Your password is not valid. A valid last name is between 6 to 18 characters. Only characters A-Z, a-z, '_', and '-' are  acceptable.");
+            alert('Your password is not valid. A valid last name is between 6 to 18 characters. Only characters A-Z, a-z, "_", and "-" are  acceptable.');
             $('#signup_password').focus();
             return;
         }
         if ($("#signup_password").val() !== $("#confirm_password").val()) {
-            alert("Passwords don't match. Please try again!");
+            alert('Passwords don't match. Please try again!');
             $('#signup_password').focus();
             return;
         }
