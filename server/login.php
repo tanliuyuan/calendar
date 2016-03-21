@@ -9,6 +9,16 @@ function returnSuccess($JSONArray) {
 }
 
 function login($username, $password) {
+	$host = 'localhost';
+	$username = 'wustl_inst';
+	$password = 'wustl_pass';
+	$db = 'calendar';
+	// Connect to database
+	$mysqli = new mysqli($host, $username, $password, $db);
+	if($mysqli->connect_errno) {
+		printf("Connection Failed: %s\n", htmlentities($mysqli->connect_error));
+		exit;
+	}
 	$stmt = $mysqli->prepare("SELECT COUNT(*), id, first_name, last_name, hashed_password FROM users WHERE username=?")
 		or returnError('Query Prep Failed: '.htmlentities($mysqli->error));
 	$stmt->bind_param('s', $username)

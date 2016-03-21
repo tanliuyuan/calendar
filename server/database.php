@@ -9,7 +9,7 @@ $db = 'calendar';
 $mysqli = new mysqli($host, $username, $password, $db);
  
 if($mysqli->connect_errno) {
-	printf("Connection Failed: %s\n", $mysqli->connect_error);
+	printf("Connection Failed: %s\n", htmlentities($mysqli->connect_error));
 	exit;
 }
 ?>
