@@ -38,8 +38,9 @@ if(isset($_POST)) {
 // Add new user into database 
 $stmt = $mysqli->prepare("INSERT INTO users (username, first_name, last_name, hashed_password) values (?, ?, ?, ?)");
 if(!$stmt){
-	printf("Query Prep Failed: %s\n", $mysqli->error);
-	exit;
+	header('HTTP/1.1 500 Internal Server Error');
+    header('Content-Type: application/json');
+    die(json_encode(array('error' => 'Query Prep Failed: '.$mysqli->error)));
 }
  
 $stmt->bind_param('ssss', $username, $first_name, $last_name, $hashed_password);
