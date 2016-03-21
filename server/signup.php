@@ -1,6 +1,7 @@
 <?php
 require_once('database.php');
 require_once('error.php');
+require_once('login.php');
 
 // Fetch, validate, and assign input data
 if(isset($_POST)) {

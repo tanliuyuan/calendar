@@ -83,10 +83,9 @@ $(document).ready(function () {
             first_name: $("#signup_first_name").val(),
             last_name: $("#signup_last_name").val(),
             password: $("#signup_password").val()
-        }).done(function (data) {
-            console.log(data);
-            if (data.responseJSON.error) {
-                alert("Error:" + data.responseJSON.error);
+        }).success(function (data) {
+            if (data.error) {
+                alert("Error:" + data.error.responseJSON.error);
             } else {
                 $('#signup_modal').modal('hide');
             }
