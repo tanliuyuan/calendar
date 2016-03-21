@@ -41,8 +41,8 @@ $(document).ready(function () {
         event.preventDefault();
         // Send login info via AJAX
         $.post("server/signup.php", {
-            username: $("#signup_username").val(),
-            password: $("#signup_password").val()
+            username: $("#username").val(),
+            password: $("#password").val()
         }).success(function (data) {
             $('#login_form').replaceWith(
                 '<div class="navbar-right">' +
