@@ -3,7 +3,7 @@ require_once('database.php');
 require_once('error.php');
 
 function returnSuccess($JSONArray) {
-	header('HTTP/1.1 500 Internal Server Error');
+	header('HTTP/1.1 200 OK');
     header('Content-Type: application/json');
     exit(json_encode($JSONArray));
 }
