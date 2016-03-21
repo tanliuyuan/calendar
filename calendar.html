@@ -28,10 +28,6 @@
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.css">
 <!-- END FullCalendar -->
 
-<!-- Other functions -->
-<script src="js/functions.js"></script>
-<!-- END Other functions -->
-
 <script>
 $(document).ready(function () {
     // Initialize calendar
@@ -90,12 +86,12 @@ $(document).ready(function () {
         }).done(function (data) {
         	console.log(data);
             if (data.error) {
-                alert("Error:" + data.error);
+                alert("Error:" + JSON.stringify(data.error));
             } else {
                 $('#signup_modal').modal('hide');
             }
         }).fail(function (err) {
-            alert("Error: " + err);
+            alert("Error: " + JSON.stringify(err));
         });
     });
 });
