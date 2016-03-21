@@ -88,7 +88,7 @@ $(document).ready(function () {
             last_name: $("#signup_last_name").val(),
             password: $("#signup_password").val()
         }).done(function (data) {
-            console.log(data);
+        	console.log(data);
             if (data.error) {
                 alert("Error:" + data.error);
             } else {
