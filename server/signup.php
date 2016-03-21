@@ -8,7 +8,7 @@ if(isset($_POST)) {
 	if(empty($username)) {
 		header('HTTP/1.1 500 Internal Server Error');
         header('Content-Type: application/json');
-        die(json_encode(array('error' => 'username not set');
+        die(json_encode(array('error' => 'username not set')));
     }
 	if(!empty($_POST['first_name'])
 		$firstName = preg_match('/[A-Za-z ]{1,50}/', $_POST['first_name']) ? $_POST['first_name'] : "";
@@ -19,12 +19,10 @@ if(isset($_POST)) {
 	if(empty($password)) {
 		header('HTTP/1.1 500 Internal Server Error');
         header('Content-Type: application/json');
-        die(json_encode(array('error' => 'password not set');
-	}
-	else
+        die(json_encode(array('error' => 'password not set')));
+	} else
 		// Encrypt password
 		$hashed_password = crypt($password);
-
 }
 
 // Add new user into database 
