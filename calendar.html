@@ -85,13 +85,13 @@ $(document).ready(function () {
             password: $("#signup_password").val()
         }).done(function (data) {
         	console.log(data);
-            if (data.error) {
-                alert("Error:" + JSON.stringify(data.error));
+            if (data.responseJSON.error) {
+                alert("Error:" + data.responseJSON.error);
             } else {
                 $('#signup_modal').modal('hide');
             }
-        }).fail(function (err) {
-            alert("Error: " + JSON.stringify(err));
+        }).fail(function err {
+            alert("Error: " + err);
         });
     });
 });
