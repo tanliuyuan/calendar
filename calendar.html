@@ -85,12 +85,14 @@ $(document).ready(function () {
             password: $("#signup_password").val()
         }).success(function (data) {
             $('#login_form').replaceWith(
-                '<h2 class="navbar-right">Welcome Back, ' +
+                '<div class="navbar-right">' +
+                '<h4>Welcome Back, ' +
                 data.user_first_name +
                 ' ' +
                 data.user_last_name +
-                '</h2>' +
-                '<a class="navbar-right" href="#">Log out</a>'
+                '</h4>' +
+                '<a href="#">Log out</a>' +
+                '</div>'
             );
             if (data.error) {
                 alert("Error:" + data.error);
