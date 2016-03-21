@@ -28,6 +28,10 @@
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.css">
 <!-- END FullCalendar -->
 
+<!-- Other functions -->
+<script src="js/functions.js"></script>
+<!-- END Other functions -->
+
 <script>
 $(document).ready(function () {
     // Initialize calendar
@@ -39,23 +43,63 @@ $(document).ready(function () {
     // Log in with AJAX
     $('#login').click(function (event) {
         event.preventDefault();
-        console.log("login");
     });
     // Bring up sign up form
     $('#signup').click(function (event) {
         event.preventDefault();
-        console.log("signup");
         $('#signup_modal').modal('show');
     });
     // Sign up with AJAX
-    $('#signup_submit').click(function (event) {
+    $("#signup_form").submit(function (event) {
         event.preventDefault();
+        // Validate user inputs
+        if (document.getElementById('signup_username').match(/^[A-Za-z0-9_\-]{3,16}$/) === null) {
+            alert("Your username is not valid. A valid username is between 3 to 16 characters. Only characters A-Z, a-z, 0-9, '-', and '_' are  acceptable.");
+            document.getElementById('signup_username').focus();
+            return;
+        }
+        if (document.getElementById('signup_first_name').match(/[A-Za-z\ ]{1,50}/) === null) {
+            alert("Your first name is not valid. A valid first name is between 1 to 50 characters. Only characters A-Z, a-z, and ' ' are  acceptable.");
+            document.getElementById('signup_first_name').focus();
+            return;
+        }
+        if (document.getElementById('signup_last_name').match(/[A-Za-z\ ]{1,50}/) === null) {
+            alert("Your last name is not valid. A valid last name is between 1 to 50 characters. Only characters A-Z, a-z, and ' ' are  acceptable.");
+            document.getElementById('signup_last_name').focus();
+            return;
+        }
+        if (document.getElementById('signup_last_name').match(/^[A-Za-z0-9_\-]{6,18}$/) === null) {
+            alert("Your password is not valid. A valid last name is between 6 to 18 characters. Only characters A-Z, a-z, '_', and '-' are  acceptable.");
+            document.getElementById('signup_last_name').focus();
+            return;
+        }
+        if ($("#signup_password").val() !== $("#confirm_password").val()) {
+            alert("Passwords don't match. Please try again!");
+            return;
+        }
+        // Send signup info via AJAX
+        /*$.post("server/signup.php", {
+            username: $("#signup_username").val(),
+            first_name: $("#signup_first_name").val(),
+            last_name: $("#signup_last_name").val(),
+            password: $("#signup_password").val()
+        }).done(function (data) {
+            if (data.error) {
+                alert("Error:" + data.error);
+                console.log(data);
+            } else {
+                alert("You've signed up. Log in to continue");
+            }
+        }).fail(function (err) {
+            alert("Error: " + err);
+        });*/
     });
 });
 </script>
 </head>
 
 <body>
+<!-- Navbar -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="collapse navbar-collapse">
@@ -76,6 +120,7 @@ $(document).ready(function () {
 </nav>
 <div id="calendar">
 </div>
+<!-- END Navbar -->
 
 <!-- Signup form -->
 <div class="container modal fade" id="signup_modal">
@@ -86,20 +131,20 @@ $(document).ready(function () {
 		<div class="modal-body">
 			<form id="signup_form" action="#" method="post">
 				<div class="form-group">
-					<label for="signup_email">Username</label>
-					<input type="text" id="signup_email" class="form-control" placeholder="Your email address" required>
+					<label for="signup_username">Username</label>
+					<input type="text" id="signup_username" class="form-control" name="username" placeholder="Username" required>
 				</div>
 				<div class="form-group">
 					<label for="signup_first_name">First Name</label>
-					<input type="text" id="signup_first_name" class="form-control" placeholder="First Name" required>
+					<input type="text" id="signup_first_name" class="form-control" name="first_name" placeholder="First Name" required>
 				</div>
 				<div class="form-group">
 					<label for="signup_first_name">Last Name</label>
-					<input type="text" id="signup_last_name" class="form-control" placeholder="Last Name" required>
+					<input type="text" id="signup_last_name" class="form-control" name="last_name" placeholder="Last Name" required>
 				</div>
 				<div class="form-group">
 					<label for="signup_password">Password</label>
-					<input type="password" id="signup_password" class="form-control" placeholder="Password" required>
+					<input type="password" id="signup_password" class="form-control" name="password" placeholder="Password" required>
 				</div>
 				<div class="form-group">
 					<label for="confirm_password">Confirm Password</label>
