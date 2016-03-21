@@ -11,20 +11,13 @@ function returnSuccess($JSONArray) {
 function login($username, $password) {
 	// Connect to database
 	$mysqli = new mysqli('localhost', 'wustl_inst', 'wustl_pass', 'calendar');
-	if($mysqli->connect_errno) {
-		printf("Connection Failed: %s\n", htmlentities($mysqli->connect_error));
-		exit;
-	}
-	$stmt = $mysqli->prepare("SELECT COUNT(*), id, first_name, last_name, hashed_password FROM users WHERE username=?")
-		or returnError('Query Prep Failed: '.htmlentities($mysqli->error));
-	$stmt->bind_param('s', $username)
-		or returnError('Parameter Binding Failed: '.htmlentities($mysqli->error));
-	$stmt->execute()
-		or returnError('Query Execution Failed: '.htmlentities($mysqli->error));
-	$stmt->bind_result($user_count, $user_id, $user_first_name, $user_last_name, $hashed_password)
-		or returnError('Result Binding Failed: '.htmlentities($mysqli->error));
-	$stmt->fetch()
-		or returnError('Result Fetching Failed: '.htmlentities($mysqli->error));
+	if($mysqli->connect_errno)
+		returnError('Connection Failed: ' . htmlentities($mysqli->connect_error));
+	$stmt = $mysqli->prepare("SELECT COUNT(*), id, first_name, last_name, hashed_password FROM users WHERE username=?") or returnError('Query Prep Failed: '.htmlentities($mysqli->error));
+	$stmt->bind_param('s', $username) or returnError('Parameter Binding Failed: '.htmlentities($mysqli->error));
+	$stmt->execute() or returnError('Query Execution Failed: '.htmlentities($mysqli->error));
+	$stmt->bind_result($user_count, $user_id, $user_first_name, $user_last_name, $hashed_password) or returnError('Result Binding Failed: '.htmlentities($mysqli->error));
+	$stmt->fetch() or returnError('Result Fetching Failed: '.htmlentities($mysqli->error));
 	$stmt->close();
 	if( $user_count === 1 && crypt($password, $hashed_password) === $hashed_password) {
 		// Set session variables
