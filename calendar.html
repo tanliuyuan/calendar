@@ -85,12 +85,12 @@ $(document).ready(function () {
             password: $("#signup_password").val()
         }).success(function (data) {
             if (data.error) {
-                alert("Error:" + data.error.responseJSON.error);
+                alert("Error:" + data.error);
             } else {
                 $('#signup_modal').modal('hide');
             }
         }).fail(function (err) {
-            alert("Error: " + JSON.stringify(err));
+            alert("Error: " + err.responseJSON.error);
         });
     });
 });
