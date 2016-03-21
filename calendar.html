@@ -56,22 +56,22 @@ $(document).ready(function () {
         var usernameRegEx = /^[A-Za-z0-9_\-]{3,16}$/;
         var nameRegEx = /[A-Za-z\ ]{1,50}/;
         var passwordRegEx = /^[A-Za-z0-9_\-]{3,16}$/;
-        if (!usernameRegEx.test($('#signup_username'))) {
+        if (!usernameRegEx.test($('#signup_username').val())) {
             alert("Your username is not valid. A valid username is between 3 to 16 characters. Only characters A-Z, a-z, 0-9, '-', and '_' are  acceptable.");
             $('#signup_username').focus();
             return;
         }
-        if (!nameRegEx.test($('#signup_first_name'))) {
+        if (!nameRegEx.test($('#signup_first_name').val())) {
             alert("Your first name is not valid. A valid first name is between 1 to 50 characters. Only characters A-Z, a-z, and ' ' are  acceptable.");
             $('#signup_first_name').focus();
             return;
         }
-        if (!nameRegEx.test($('#signup_last_name'))) {
+        if (!nameRegEx.test($('#signup_last_name').val())) {
             alert("Your last name is not valid. A valid last name is between 1 to 50 characters. Only characters A-Z, a-z, and ' ' are  acceptable.");
             $('#signup_last_name').focus();
             return;
         }
-        if (!passwordRegEx.test($('#signup_password'))) {
+        if (!passwordRegEx.test($('#signup_password').val())) {
             alert("Your password is not valid. A valid last name is between 6 to 18 characters. Only characters A-Z, a-z, '_', and '-' are  acceptable.");
             $('#signup_password').focus();
             return;
