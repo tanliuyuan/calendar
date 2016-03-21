@@ -33,7 +33,7 @@ $stmt->execute() or returnError('Query Execution Failed: '.htmlentities($mysqli-
 $stmt->bind_result($user_count) or returnError('Result Binding Failed: '.htmlentities($mysqli->error));
 $stmt->fetch() or returnError('Result Fetching Failed: '.htmlentities($mysqli->error));
 if($user_count >= 1)
-	returnError('Username already exists. Please try another one!'.$user_count);
+	returnError('Username already exists. Please try another one!');
 $stmt->close();
 
 // Add new user into database 
