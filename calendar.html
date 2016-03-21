@@ -84,7 +84,14 @@ $(document).ready(function () {
             last_name: $("#signup_last_name").val(),
             password: $("#signup_password").val()
         }).success(function (data) {
-            console.log(data);
+            $('#login_form').replaceWith(
+                '<h2 class="navbar-right">Welcome Back, ' +
+                data.user_first_name +
+                ' ' +
+                data.user_last_name +
+                '</h2>' +
+                '<a class="navbar-right" href="#">Log out</a>'
+            );
             if (data.error) {
                 alert("Error:" + data.error);
             } else {
@@ -102,13 +109,11 @@ $(document).ready(function () {
 <!-- Navbar -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
-		<div class="collapse navbar-collapse">
+		<div id="user_info">
 			<form class="navbar-form navbar-right" id="login_form" action="#">
         		<div class="form-group">
         			<label for="username">Username</label>
           			<input type="text" class="form-control" id="username" placeholder="Username">
-        		</div>
-        		<div class="form-group">
     				<label for="password">Password</label>
     				<input type="password" class="form-control" id="password" placeholder="Password">
   				</div>
