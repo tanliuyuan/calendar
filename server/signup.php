@@ -11,15 +11,15 @@ if(isset($_POST)) {
         die(json_encode(array('error' => 'username not valid')));
     }
 	if(!empty($_POST['first_name']))
-		$firstName = preg_match('/[A-Za-z \'-]{1,50}/', $_POST['first_name']) ? $_POST['first_name'] : "";
-	if(empty($firstName)) {
+		$first_name = preg_match('/[A-Za-z \'-]{1,50}/', $_POST['first_name']) ? $_POST['first_name'] : "";
+	if(empty($first_name)) {
 		header('HTTP/1.1 500 Internal Server Error');
         header('Content-Type: application/json');
         die(json_encode(array('error' => 'first name not valid')));
     }
 	if(!empty($_POST['last_name']))
-		$lastName = preg_match('/[A-Za-z \'-]{1,50}/', $_POST['last_name']) ? $_POST['last_name'] : "";
-	if(empty($lastName)) {
+		$last_name = preg_match('/[A-Za-z \'-]{1,50}/', $_POST['last_name']) ? $_POST['last_name'] : "";
+	if(empty($last_name)) {
 		header('HTTP/1.1 500 Internal Server Error');
         header('Content-Type: application/json');
         die(json_encode(array('error' => 'last name not valid')));
