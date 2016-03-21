@@ -9,12 +9,8 @@ function returnSuccess($JSONArray) {
 }
 
 function login($username, $password) {
-	$host = 'localhost';
-	$username = 'wustl_inst';
-	$password = 'wustl_pass';
-	$db = 'calendar';
 	// Connect to database
-	$mysqli = new mysqli($host, $username, $password, $db);
+	$mysqli = new mysqli('localhost', 'wustl_inst', 'wustl_pass', 'calendar');
 	if($mysqli->connect_errno) {
 		printf("Connection Failed: %s\n", htmlentities($mysqli->connect_error));
 		exit;
