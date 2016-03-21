@@ -39,6 +39,27 @@ $(document).ready(function () {
     // Log in with AJAX
     $('#login').click(function (event) {
         event.preventDefault();
+        // Send login info via AJAX
+        $.post("server/signup.php", {
+            username: $("#signup_username").val(),
+            password: $("#signup_password").val()
+        }).success(function (data) {
+            $('#login_form').replaceWith(
+                '<div class="navbar-right">' +
+                '<h4>Welcome Back, ' +
+                data.user_first_name +
+                ' ' +
+                data.user_last_name +
+                '</h4>' +
+                '<a href="#" id="logout">Log out</a>' +
+                '</div>'
+            );
+            if (data.error) {
+                alert("Error:" + data.error);
+            }
+        }).fail(function (err) {
+            alert("AJAX request failed: " + err.responseJSON.error);
+        });
     });
     // Bring up sign up form
     $('#signup').click(function (event) {
@@ -91,7 +112,7 @@ $(document).ready(function () {
                 ' ' +
                 data.user_last_name +
                 '</h4>' +
-                '<a href="#">Log out</a>' +
+                '<a href="#" id="logout">Log out</a>' +
                 '</div>'
             );
             if (data.error) {
