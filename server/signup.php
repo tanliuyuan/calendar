@@ -1,20 +1,27 @@
 <?php
+ini_set("session.cookie_httponly", 1);
+session_start();
+
 require_once('database.php');
 require_once('error.php');
 require_once('login.php');
 
 // Fetch, validate, and assign input data
-if(!empty($_POST['signup_username']) && !empty($_POST['signup_first_name'] && !empty($_POST['signup_last_name']) && !empty($_POST['signup_password'])) {
-	$username = preg_match('/^[A-Za-z0-9_-]{3,16}$/', $_POST['signup_username']) ? $_POST['signup_username'] : "";
+if(isset($_POST)) {
+	if(!empty($_POST['username']))
+		$username = preg_match('/^[A-Za-z0-9_-]{3,16}$/', $_POST['username']) ? $_POST['username'] : "";
 	if(empty($username))
 		returnError('username not valid');
-	$first_name = preg_match('/[A-Za-z \'-]{1,50}/', $_POST['signup_first_name']) ? $_POST['signup_first_name'] : "";
+	if(!empty($_POST['first_name']))
+		$first_name = preg_match('/[A-Za-z \'-]{1,50}/', $_POST['first_name']) ? $_POST['first_name'] : "";
 	if(empty($first_name))
 		returnError('first name not valid');
-	$last_name = preg_match('/[A-Za-z \'-]{1,50}/', $_POST['signup_last_name']) ? $_POST['signup_last_name'] : "";
+	if(!empty($_POST['last_name']))
+		$last_name = preg_match('/[A-Za-z \'-]{1,50}/', $_POST['last_name']) ? $_POST['last_name'] : "";
 	if(empty($last_name))
 		returnError('last name not valid');
-	$password = preg_match('/^[A-Za-z0-9_-]{6,18}$/', $_POST['signup_password']) ? $_POST['signup_password'] : "";
+	if(!empty($_POST['password']))
+		$password = preg_match('/^[A-Za-z0-9_-]{6,18}$/', $_POST['password']) ? $_POST['password'] : "";
 	if(empty($password))
 		returnError('password not valid');
 	else
