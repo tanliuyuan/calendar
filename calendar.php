@@ -34,12 +34,7 @@ session_start();
 
 <script>
 $(document).ready(function () {
-    // Initialize calendar
     "use strict";
-    $('#calendar').fullCalendar({
-        aspectRatio: 1.78,
-        fixedWeekCount: false
-    });
     // Log in with AJAX
     $('#login').click(function (event) {
         event.preventDefault();
@@ -131,6 +126,18 @@ $(document).ready(function () {
             $('#user_last_name').html('');
             $("#login_form").show();
         });
+    });
+    // Initialize calendar
+    $('#calendar').fullCalendar({
+        events: {
+            url: 'server/event_feed.php',
+            type: 'POST',
+            error: function () {
+                alert('There was an error while fetching events!');
+            }
+        }
+        aspectRatio: 1.78,
+        fixedWeekCount: false
     });
 });
 </script>
