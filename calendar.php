@@ -44,7 +44,7 @@ $(document).ready(function () {
     $('#login').click(function (event) {
         event.preventDefault();
         // Send login info via AJAX
-        $.post("server/signup.php", {
+        $.post("server/login.php", {
             username: $("#username").val(),
             password: $("#password").val()
         }).success(function (data) {
