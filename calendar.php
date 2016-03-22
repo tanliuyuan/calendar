@@ -132,9 +132,8 @@ $(document).ready(function () {
         events: {
             url: 'server/event_feed.php',
             type: 'POST',
-            error: function (error) {
+            error: function () {
                 alert('There was an error while fetching events!');
-                console.log(error);
             }
         },
         aspectRatio: 1.78,

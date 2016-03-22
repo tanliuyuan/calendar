@@ -19,9 +19,9 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['u
 		or returnError('Result Getting Failed: '.htmlspecialchars($mysqli->error));
 	while($row = $result->fetch_assoc()) {
 		$event = array(
-			'title' => htmlspecialchars($row['title']),
-			'start' => htmlspecialchars($row['start_time']),
-			'end' => htmlspecialchars($row['end_time'])
+			'title' => $row['title'],
+			'start' => $row['start_time'],
+			'end' => $row['end_time']
 		);
 		array_push($eventsArray, $event);
 	}
