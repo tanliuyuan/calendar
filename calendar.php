@@ -45,8 +45,8 @@ $(document).ready(function () {
         event.preventDefault();
         // Send login info via AJAX
         $.post("server/signup.php", {
-            username: $("#username").val(),
-            password: $("#password").val()
+            login_username: $("#username").val(),
+            login_password: $("#password").val()
         }).success(function (data) {
             // After successful login, hide login form and display user info
             $("#login_form").hide();
@@ -99,10 +99,10 @@ $(document).ready(function () {
         }
         // Send signup info via AJAX
         $.post("server/signup.php", {
-            username: $("#signup_username").val(),
-            first_name: $("#signup_first_name").val(),
-            last_name: $("#signup_last_name").val(),
-            password: $("#signup_password").val()
+            signup_username: $("#signup_username").val(),
+            signup_first_name: $("#signup_first_name").val(),
+            signup_last_name: $("#signup_last_name").val(),
+            signup_password: $("#signup_password").val()
         }).success(function (data) {
             if (data.error) {
                 alert("Error:" + data.error);
