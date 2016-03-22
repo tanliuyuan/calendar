@@ -18,11 +18,12 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['u
 	$stmt->get_result() 
 		or returnError('Result Getting Failed: '.htmlspecialchars($mysqli->error));
 	while($row = $result->fetch_assoc()) {
-		$eventsArray.append(array(
+		$event = array(
 			'title' => htmlspecialchars($row["title"]),
 			'start' => htmlspecialchars($row["start_time"])
 			'end' => htmlspecialchars($row["end_time"])
-		));
+		);
+		$eventsArray.append($event);
 	}
 	$stmt->close();
 }
