@@ -125,6 +125,8 @@ $(document).ready(function () {
             $('#user_first_name').html('');
             $('#user_last_name').html('');
             $("#login_form").show();
+            // Clear all events
+            $('#calendar').fullCalendar('refetchEvents');
         });
     });
     // Initialize calendar
