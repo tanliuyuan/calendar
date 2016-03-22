@@ -23,7 +23,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['u
 			'start' => htmlspecialchars($row['start_time']),
 			'end' => htmlspecialchars($row['end_time'])
 		);
-		$eventsArray.append($event);
+		array_push($eventsArray, $event);
 	}
 	$stmt->close();
 }
