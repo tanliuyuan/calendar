@@ -106,7 +106,6 @@ $(document).ready(function () {
             last_name: $("#signup_last_name").val(),
             password: $("#signup_password").val()
         }).success(function (data) {
-        	console.log(data);
             $('#login_form').replaceWith(
                 '<div class="navbar-right" id="user_info">' +
                 '<h4>Welcome Back, ' +
@@ -129,7 +128,6 @@ $(document).ready(function () {
     // Logout
     $("#logout").click(function (event) {
         event.preventDefault();
-        console.log('logout');
         $.get('server/logout.php').done(function () {
             $('#user_info').replaceWith(
                 '<form class="navbar-form navbar-right" id="login_form" action="#">' +
@@ -155,7 +153,7 @@ $(document).ready(function () {
 	<div class="container-fluid">
 		<div>
 		<?php
-		//session_start();
+		session_start();
 		if (empty($_SESSION))
 			echo('
 				<form class="navbar-form navbar-right" id="login_form" action="#">
@@ -171,14 +169,14 @@ $(document).ready(function () {
         	');
         else
         	echo('
-        		<div class="navbar-right">
+        		<div class="navbar-right" id="user_info">
         			<h4>Welcome Back, ' . $_SESSION['user_first_name'] . ' ' . $_SESSION['user_last_name'] . '</h4>
-        			<a href="#" class="navbar-right" id="logout">Log out</a>
+        			<a href="#" class="navbar-right row" id="logout">Log out</a>
         		</div>
         	');
         ?>
       	</div>
-      	<a href="#" class="row" id="logout">Log out</a>
+      	<a href="#" class="navbar-right row" id="logout">Log out</a>
     </div>
 </nav>
 <div id="calendar">
