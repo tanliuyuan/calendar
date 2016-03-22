@@ -1,4 +1,5 @@
 <?php
+ini_set("session.cookie_httponly", 1);
 session_start();
 ?>
 <!DOCTYPE HTML>
@@ -154,31 +155,30 @@ $(document).ready(function () {
 <!-- Navbar -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
-		<div id="user_info">
+		<div>
+		<!-- Login form -->
+		<form class="navbar-form navbar-right" id="login_form" action="#">
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" class="form-control" id="username" placeholder="Username">
+				<label for="password">Password</label>
+				<input type="password" class="form-control" id="password" placeholder="Password">
+			</div>
+			<button type="submit" class="btn btn-default" id="login">Login</button>
+			<button type="button" class="navbar-right btn btn-default" id="signup">Sign Up</button>
+		</form>
+		<!-- User welcome info -->
+		<div class="navbar-right" id="user_info">
+        	<h4>Welcome Back, <?php echo($_SESSION['user_first_name']?$_SESSION['user_first_name']:'')?> <?php echo($_SESSION['user_last_name']?$_SESSION['user_last_name']:"");?></h4>
+        	<a href="#" class="row navbar-right" id="logout">Log out</a>
+        </div>
 		<?php
 		if (empty($_SESSION))
-			echo('
-				<form class="navbar-form navbar-right" id="login_form" action="#">
-					<div class="form-group">
-						<label for="username">Username</label>
-						<input type="text" class="form-control" id="username" placeholder="Username">
-						<label for="password">Password</label>
-						<input type="password" class="form-control" id="password" placeholder="Password">
-					</div>
-					<button type="submit" class="btn btn-default" id="login">Login</button>
-					<button type="button" class="navbar-right btn btn-default" id="signup">Sign Up</button>
-        		</form>
-        	');
+			echo('<script>$("#user_info").hide();</script>');
         else
-        	echo('
-        		<div class="navbar-right">
-        			<h4>Welcome Back, ' . $_SESSION['user_first_name'] . ' ' . $_SESSION['user_last_name'] . '</h4>
-        		</div>
-        		<a href="#" class="navbar-right row" id="logout">Log out</a>
-        	');
+        	echo('<script>$("#login_form").hide();</script>');
         ?>
       	</div>
-      	<a href="#" class="navbar-right row" id="logout">Log out</a>
     </div>
 </nav>
 <div id="calendar">

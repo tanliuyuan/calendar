@@ -1,4 +1,7 @@
 <?php
+ini_set("session.cookie_httponly", 1);
+session_start();
+
 require_once('database.php');
 require_once('error.php');
 
@@ -40,7 +43,6 @@ function login($username, $password) {
 	$stmt->close();
 	if( $user_count === 1 && crypt($password, $hashed_password) === $hashed_password) {
 		// Set session variables
-		session_start();
 		$_SESSION['user_id'] = $user_id;
 		$_SESSION['user_first_name'] = $user_first_name;
 		$_SESSION['user_last_name'] = $user_last_name;
