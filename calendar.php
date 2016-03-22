@@ -48,6 +48,7 @@ $(document).ready(function () {
             username: $("#username").val(),
             password: $("#password").val()
         }).success(function (data) {
+            // After successful login, hide login form and display user info
             $("#login_form").hide();
             $('#user_first_name').html(data.user_first_name);
             $('#user_last_name').html(data.user_last_name);
@@ -103,6 +104,7 @@ $(document).ready(function () {
             last_name: $("#signup_last_name").val(),
             password: $("#signup_password").val()
         }).success(function (data) {
+            // After successful login, hide login form and display user info
             $("#login_form").hide();
             $('#user_first_name').html(data.user_first_name);
             $('#user_last_name').html(data.user_last_name);
@@ -120,7 +122,10 @@ $(document).ready(function () {
     $("#logout").click(function (event) {
         event.preventDefault();
         $.get('server/logout.php').done(function () {
+            // After logged out, hide and clear user info, and bring back login form
             $("#user_info").hide();
+            $('#user_first_name').html('');
+            $('#user_last_name').html('');
             $("#login_form").show();
         });
     });
@@ -144,13 +149,13 @@ $(document).ready(function () {
 			<button type="submit" class="btn btn-default" id="login">Login</button>
 			<button type="button" class="navbar-right btn btn-default" id="signup">Sign Up</button>
 		</form>
-		<!-- User welcome message -->
+		<!-- User info -->
 		<div class="navbar-right" id="user_info">
-        	<h4>Welcome Back, <p id="user_first_name"><?php echo(!empty($_SESSION)?$_SESSION['user_first_name']:'')?></p> <p id="user_last_name"><?php echo(!empty($_SESSION)?$_SESSION['user_last_name']:"");?></p></h4>
+        	<h4>Welcome Back, <span id="user_first_name"><?php echo(!empty($_SESSION)?$_SESSION['user_first_name']:'')?></span> <span id="user_last_name"><?php echo(!empty($_SESSION)?$_SESSION['user_last_name']:"");?></span></h4>
         	<a href="#" class="row navbar-right" id="logout">Log out</a>
         </div>
 		<?php
-		// If user is logged in and session is set, hide login form, otherwise hide welcome message
+		// If user is logged in and session is set, hide login form, otherwise hide user info
 		if (empty($_SESSION))
 			echo('<script>$("#user_info").hide();</script>');
         else
