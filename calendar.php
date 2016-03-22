@@ -156,7 +156,7 @@ $(document).ready(function () {
 		<div>
 		<?php
 		//session_start();
-		if (!isset($_SESSION))
+		if (empty($_SESSION))
 			echo('
 				<form class="navbar-form navbar-right" id="login_form" action="#">
 					<div class="form-group">
