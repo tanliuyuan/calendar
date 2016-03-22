@@ -178,7 +178,7 @@ $(document).ready(function () {
         	');
         ?>
       	</div>
-      	<a href="#" class="navbar-right" id="logout">Log out</a>
+      	<a href="#" class="row" id="logout">Log out</a>
     </div>
 </nav>
 <div id="calendar">
