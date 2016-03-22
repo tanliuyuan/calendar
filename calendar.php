@@ -106,6 +106,7 @@ $(document).ready(function () {
             last_name: $("#signup_last_name").val(),
             password: $("#signup_password").val()
         }).success(function (data) {
+        	console.log(data);
             $('#login_form').replaceWith(
                 '<div class="navbar-right" id="user_info">' +
                 '<h4>Welcome Back, ' +
