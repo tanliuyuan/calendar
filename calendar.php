@@ -48,16 +48,8 @@ $(document).ready(function () {
             username: $("#username").val(),
             password: $("#password").val()
         }).success(function (data) {
-            $('#user_info').html(
-                '<div class="navbar-right">' +
-                '<h4>Welcome Back, ' +
-                data.user_first_name +
-                ' ' +
-                data.user_last_name +
-                '</h4>' +
-                '</div>'
-            );
-            $('#logout').show();
+            $("#login_form").hide();
+            $('#user_info').show();
             if (data.error) {
                 alert("Error:" + data.error);
             }
@@ -70,7 +62,6 @@ $(document).ready(function () {
         event.preventDefault();
         $('#signup_modal').modal('show');
     });
-    $('#logout').hide();
     // Sign up with AJAX
     $('#signup_form').submit(function (event) {
         event.preventDefault();
@@ -110,16 +101,8 @@ $(document).ready(function () {
             last_name: $("#signup_last_name").val(),
             password: $("#signup_password").val()
         }).success(function (data) {
-            $('#user_info').html(
-                '<div class="navbar-right">' +
-                '<h4>Welcome Back, ' +
-                data.user_first_name +
-                ' ' +
-                data.user_last_name +
-                '</h4>' +
-                '</div>'
-            );
-            $('#logout').show();
+            $("#login_form").hide();
+            $('#user_info').show();
             if (data.error) {
                 alert("Error:" + data.error);
             } else {
@@ -133,18 +116,7 @@ $(document).ready(function () {
     $("#logout").click(function (event) {
         event.preventDefault();
         $.get('server/logout.php').done(function () {
-            $('#user_info').html(
-                '<form class="navbar-form navbar-right" id="login_form" action="#">' +
-                '<div class="form-group">' +
-                '<label for="username">Username</label>' +
-                '<input type="text" class="form-control" id="username" placeholder="Username">' +
-                '<label for="password">Password</label>' +
-                '<input type="password" class="form-control" id="password" placeholder="Password">' +
-                '</div>' +
-                '<button type="submit" class="btn btn-default" id="login">Login</button>' +
-                '<button type="button" class="navbar-right btn btn-default" id="signup">Sign Up</button>' +
-                '</form>'
-            );
+            $("#user_info").hide();
         });
     });
 });
@@ -167,12 +139,13 @@ $(document).ready(function () {
 			<button type="submit" class="btn btn-default" id="login">Login</button>
 			<button type="button" class="navbar-right btn btn-default" id="signup">Sign Up</button>
 		</form>
-		<!-- User welcome info -->
+		<!-- User welcome message -->
 		<div class="navbar-right" id="user_info">
         	<h4>Welcome Back, <?php echo($_SESSION['user_first_name']?$_SESSION['user_first_name']:'')?> <?php echo($_SESSION['user_last_name']?$_SESSION['user_last_name']:"");?></h4>
         	<a href="#" class="row navbar-right" id="logout">Log out</a>
         </div>
 		<?php
+		// If user is logged in and session is set, hide login form, otherwise hide welcome message
 		if (empty($_SESSION))
 			echo('<script>$("#user_info").hide();</script>');
         else
