@@ -66,8 +66,9 @@ $(document).ready(function () {
         event.preventDefault();
         $('#signup_modal').modal('show');
     });
+    $('#logout').hide();
     // Sign up with AJAX
-    $("#signup_form").submit(function (event) {
+    $('#signup_form').submit(function (event) {
         event.preventDefault();
         // Validate user inputs
         var usernameRegEx = /^[A-Za-z0-9_\-]{3,16}$/;
@@ -112,9 +113,9 @@ $(document).ready(function () {
                 ' ' +
                 data.user_last_name +
                 '</h4>' +
-                '<a href="#" id="logout">Log out</a>' +
                 '</div>'
             );
+            $('#logout').show();
             if (data.error) {
                 alert("Error:" + data.error);
             } else {
@@ -175,6 +176,7 @@ $(document).ready(function () {
         		</div>
         	');
         ?>
+        <a href="#" class="navbar-right" id="logout">Log out</a>
       	</div>
     </div>
 </nav>
