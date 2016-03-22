@@ -7,10 +7,10 @@ require_once('error.php');
 
 // Fetch, validate, and assign input data
 if(!empty($_POST['login_username']) && !empty($_POST['login_password'])) {
-	$username = preg_match('/^[A-Za-z0-9_-]{3,16}$/', $_POST['username']) ? $_POST['username'] : "";
+	$username = preg_match('/^[A-Za-z0-9_-]{3,16}$/', $_POST['login_username']) ? $_POST['login_username'] : "";
 	if(empty($username))
 		returnError('username not valid');
-	$password = preg_match('/^[A-Za-z0-9_-]{6,18}$/', $_POST['password']) ? $_POST['password'] : "";
+	$password = preg_match('/^[A-Za-z0-9_-]{6,18}$/', $_POST['login_password']) ? $_POST['login_password'] : "";
 	if(empty($password))
 		returnError('password not valid');
 	else
