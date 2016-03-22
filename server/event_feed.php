@@ -26,6 +26,8 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['u
 		array_push($eventsArray, $event);
 	}
 	$stmt->close();
-	returnSuccess(json_encode($eventsArray));
 }
+
+// Return events as a JSON feed
+returnSuccess(json_encode($eventsArray));
 ?>
