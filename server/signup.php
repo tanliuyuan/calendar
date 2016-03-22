@@ -27,19 +27,27 @@ if(isset($_POST)) {
 }
 
 // Check if username exists
-$stmt = $mysqli->prepare("SELECT COUNT(*) FROM users WHERE username=?") or returnError('Query Prep Failed: '.htmlentities($mysqli->error));
-$stmt->bind_param('s', $username) or returnError('Parameter Binding Failed: '.htmlentities($mysqli->error));
-$stmt->execute() or returnError('Query Execution Failed: '.htmlentities($mysqli->error));
-$stmt->bind_result($user_count) or returnError('Result Binding Failed: '.htmlentities($mysqli->error));
-$stmt->fetch() or returnError('Result Fetching Failed: '.htmlentities($mysqli->error));
+$stmt = $mysqli->prepare("SELECT COUNT(*) FROM users WHERE username=?") 
+	or returnError('Query Prep Failed: '.htmlentities($mysqli->error));
+$stmt->bind_param('s', $username) 
+	or returnError('Parameter Binding Failed: '.htmlentities($mysqli->error));
+$stmt->execute() 
+	or returnError('Query Execution Failed: '.htmlentities($mysqli->error));
+$stmt->bind_result($user_count) 
+	or returnError('Result Binding Failed: '.htmlentities($mysqli->error));
+$stmt->fetch() 
+	or returnError('Result Fetching Failed: '.htmlentities($mysqli->error));
 if($user_count >= 1)
 	returnError('Username already exists. Please try another one!');
 $stmt->close();
 
 // Add new user into database 
-$stmt = $mysqli->prepare("INSERT INTO users (username, first_name, last_name, hashed_password) values (?, ?, ?, ?)") or returnError('Query Prep Failed: '.htmlentities($mysqli->error));
-$stmt->bind_param('ssss', $username, $first_name, $last_name, $hashed_password) or returnError('Parameter Binding Failed: '.htmlentities($mysqli->error));
-$stmt->execute() or returnError('Query Execution Failed: '.htmlentities($mysqli->error));
+$stmt = $mysqli->prepare("INSERT INTO users (username, first_name, last_name, hashed_password) values (?, ?, ?, ?)") 
+	or returnError('Query Prep Failed: '.htmlentities($mysqli->error));
+$stmt->bind_param('ssss', $username, $first_name, $last_name, $hashed_password) 
+	or returnError('Parameter Binding Failed: '.htmlentities($mysqli->error));
+$stmt->execute() 
+	or returnError('Query Execution Failed: '.htmlentities($mysqli->error));
 $stmt->close();
 
 // Log in as new user

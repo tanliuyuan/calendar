@@ -122,7 +122,7 @@ $(document).ready(function () {
     $("#logout").click(function (event) {
         event.preventDefault();
         $.get('server/logout.php').done(function () {
-            // After logged out, hide and clear user info, and bring back login form
+            // Once logged out, hide and clear user info, and bring back login form
             $("#user_info").hide();
             $('#user_first_name').html('');
             $('#user_last_name').html('');
