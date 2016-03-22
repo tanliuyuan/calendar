@@ -51,5 +51,5 @@ $stmt->execute()
 $stmt->close();
 
 // Log in as new user
-//login($username, $password);
+login($username, $password);
 ?>

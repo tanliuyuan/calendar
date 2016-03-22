@@ -104,15 +104,15 @@ $(document).ready(function () {
             last_name: $("#signup_last_name").val(),
             password: $("#signup_password").val()
         }).success(function (data) {
-            // After successful login, hide login form and display user info
-            $("#login_form").hide();
-            $('#user_first_name').html(data.user_first_name);
-            $('#user_last_name').html(data.user_last_name);
-            $('#user_info').show();
             if (data.error) {
                 alert("Error:" + data.error);
             } else {
                 $('#signup_modal').modal('hide');
+                // After successful login, hide login form and display user info
+                $("#login_form").hide();
+                $('#user_first_name').html(data.user_first_name);
+                $('#user_last_name').html(data.user_last_name);
+                $('#user_info').show();
             }
         }).fail(function (err) {
             alert("AJAX request failed: " + err.responseJSON.error);
