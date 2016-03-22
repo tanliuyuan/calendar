@@ -117,6 +117,7 @@ $(document).ready(function () {
         event.preventDefault();
         $.get('server/logout.php').done(function () {
             $("#user_info").hide();
+            $("#login_form").show();
         });
     });
 });
