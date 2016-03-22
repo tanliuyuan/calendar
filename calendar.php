@@ -148,12 +148,14 @@ $(document).ready(function () {
 </head>
 
 <body>
+<?php
+session_start();
+?>
 <!-- Navbar -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div>
 		<?php
-		session_start();
 		if (empty($_SESSION))
 			echo('
 				<form class="navbar-form navbar-right" id="login_form" action="#">
