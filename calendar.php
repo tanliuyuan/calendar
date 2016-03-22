@@ -125,8 +125,9 @@ $(document).ready(function () {
         });
     });
     // Logout
-    $("#logout").click(function (e) {
-        e.preventDefault();
+    $("#logout").click(function (event) {
+        event.preventDefault();
+        console.log('logout');
         $.get('server/logout.php').done(function () {
             $('#user_info').replaceWith(
                 '<form class="navbar-form navbar-right" id="login_form" action="#">' +
@@ -152,7 +153,7 @@ $(document).ready(function () {
 	<div class="container-fluid">
 		<div>
 		<?php
-		session_start();
+		//session_start();
 		if (!isset($_SESSION))
 			echo('
 				<form class="navbar-form navbar-right" id="login_form" action="#">
