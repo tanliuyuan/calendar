@@ -161,15 +161,15 @@ $(document).ready(function () {
 		</form>
 		<!-- User info -->
 		<div class="navbar-right" id="user_info">
-        	<h4>Welcome Back, <span id="user_first_name"><?php echo(!empty($_SESSION)?$_SESSION['user_first_name']:'')?></span> <span id="user_last_name"><?php echo(!empty($_SESSION)?$_SESSION['user_last_name']:"");?></span></h4>
+        	<h4>Welcome Back, <span id="user_first_name"><?php echo(isset($_SESSION['user_first_name'])?$_SESSION['user_first_name']:'')?></span> <span id="user_last_name"><?php echo(isset($_SESSION['user_last_name'])?$_SESSION['user_last_name']:"");?></span></h4>
         	<a href="#" class="row navbar-right" id="logout">Log out</a>
         </div>
 		<?php
 		// If user is logged in and session is set, hide login form, otherwise hide user info
-		if (empty($_SESSION))
-			echo('<script>$("#user_info").hide();</script>');
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'])
+			echo('<script>$("#login_form").hide();</script>');
         else
-        	echo('<script>$("#login_form").hide();</script>');
+        	echo('<script>$("#user_info").hide();</script>');
         ?>
       	</div>
     </div>
