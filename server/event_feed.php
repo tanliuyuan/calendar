@@ -15,7 +15,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['u
 		or returnError('Parameter Binding Failed: '.htmlspecialchars($mysqli->error));
 	$stmt->execute() 
 		or returnError('Query Execution Failed: '.htmlspecialchars($mysqli->error));
-	$stmt->get_result() 
+	$result = $stmt->get_result() 
 		or returnError('Result Getting Failed: '.htmlspecialchars($mysqli->error));
 	while($row = $result->fetch_assoc()) {
 		$event = array(
