@@ -135,7 +135,7 @@ $(document).ready(function () {
             error: function () {
                 alert('There was an error while fetching events!');
             }
-        }
+        },
         aspectRatio: 1.78,
         fixedWeekCount: false
     });
