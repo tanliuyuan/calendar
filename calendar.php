@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -148,9 +151,6 @@ $(document).ready(function () {
 </head>
 
 <body>
-<?php
-session_start();
-?>
 <!-- Navbar -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
@@ -173,8 +173,8 @@ session_start();
         	echo('
         		<div class="navbar-right" id="user_info">
         			<h4>Welcome Back, ' . $_SESSION['user_first_name'] . ' ' . $_SESSION['user_last_name'] . '</h4>
-        			<a href="#" class="navbar-right row" id="logout">Log out</a>
         		</div>
+        		<a href="#" class="navbar-right row" id="logout">Log out</a>
         	');
         ?>
       	</div>
