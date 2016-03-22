@@ -49,6 +49,8 @@ $(document).ready(function () {
             password: $("#password").val()
         }).success(function (data) {
             $("#login_form").hide();
+            $('#user_first_name').html(data.user_first_name);
+            $('#user_last_name').html(data.user_last_name);
             $('#user_info').show();
             if (data.error) {
                 alert("Error:" + data.error);
@@ -102,6 +104,8 @@ $(document).ready(function () {
             password: $("#signup_password").val()
         }).success(function (data) {
             $("#login_form").hide();
+            $('#user_first_name').html(data.user_first_name);
+            $('#user_last_name').html(data.user_last_name);
             $('#user_info').show();
             if (data.error) {
                 alert("Error:" + data.error);
@@ -142,7 +146,7 @@ $(document).ready(function () {
 		</form>
 		<!-- User welcome message -->
 		<div class="navbar-right" id="user_info">
-        	<h4>Welcome Back, <?php echo($_SESSION['user_first_name']?$_SESSION['user_first_name']:'')?> <?php echo($_SESSION['user_last_name']?$_SESSION['user_last_name']:"");?></h4>
+        	<h4>Welcome Back, <p id="user_first_name"><?php echo(!empty($_SESSION)?$_SESSION['user_first_name']:'')?></p> <p id="user_last_name"><?php echo(!empty($_SESSION)?$_SESSION['user_last_name']:"");?></p></h4>
         	<a href="#" class="row navbar-right" id="logout">Log out</a>
         </div>
 		<?php
