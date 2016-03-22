@@ -47,7 +47,7 @@ $(document).ready(function () {
             username: $("#username").val(),
             password: $("#password").val()
         }).success(function (data) {
-            $('#login_form').replaceWith(
+            $('#user_info').html(
                 '<div class="navbar-right">' +
                 '<h4>Welcome Back, ' +
                 data.user_first_name +
@@ -109,8 +109,8 @@ $(document).ready(function () {
             last_name: $("#signup_last_name").val(),
             password: $("#signup_password").val()
         }).success(function (data) {
-            $('#login_form').replaceWith(
-                '<div class="navbar-right" id="user_info">' +
+            $('#user_info').html(
+                '<div class="navbar-right">' +
                 '<h4>Welcome Back, ' +
                 data.user_first_name +
                 ' ' +
@@ -132,7 +132,7 @@ $(document).ready(function () {
     $("#logout").click(function (event) {
         event.preventDefault();
         $.get('server/logout.php').done(function () {
-            $('#user_info').replaceWith(
+            $('#user_info').html(
                 '<form class="navbar-form navbar-right" id="login_form" action="#">' +
                 '<div class="form-group">' +
                 '<label for="username">Username</label>' +
@@ -154,7 +154,7 @@ $(document).ready(function () {
 <!-- Navbar -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
-		<div>
+		<div id="user_info">
 		<?php
 		if (empty($_SESSION))
 			echo('
@@ -171,7 +171,7 @@ $(document).ready(function () {
         	');
         else
         	echo('
-        		<div class="navbar-right" id="user_info">
+        		<div class="navbar-right">
         			<h4>Welcome Back, ' . $_SESSION['user_first_name'] . ' ' . $_SESSION['user_last_name'] . '</h4>
         		</div>
         		<a href="#" class="navbar-right row" id="logout">Log out</a>
