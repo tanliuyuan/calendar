@@ -34,8 +34,8 @@ session_start();
 
 <!-- Datetimepicker -->
 <!-- Credit: http://eonasdan.github.io/bootstrap-datetimepicker/ -->
-<script src="js/bootstrap-datetimepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
 <!-- END Datetimepicker -->
 
 <!-- My own JS functions -->
