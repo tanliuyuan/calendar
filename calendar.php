@@ -298,13 +298,13 @@ $(document).ready(function () {
 
 <!-- Edit/delete event options -->
 <div class="container modal fade" id="edit_delete_event_modal">
-	<div class="modal-content col-md-3 col-md-offset-6">
+	<div class="modal-content col-md-1 col-md-offset-10">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
 		</div>
 		<div class="modal-body">
 			<div class="row">
-				<div class="col-md-3 col-md-offset-6">
+				<div class="col-md-1 col-md-offset-10">
 					<button id="edit_event" class="btn btn-primary" type="button">Edit Event</button>
 					<button id="delete_event" class="btn btn-primary" type="button">Delete Event</button>
 				</div>
