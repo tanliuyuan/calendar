@@ -196,7 +196,7 @@ $(document).ready(function () {
             view = view;
             var event_id = calEvent.id;
             var event_title = calEvent.title;
-            var event_start_time = calEvent.start._i.substr(0, 16);
+            var event_start_time = calEvent.start.format('YYYY-MM-DD hh:mm');
             var event_end_time = calEvent.end.format('YYYY-MM-DD hh:mm');
             $('#edit_delete_event_modal').modal('show');
             // Edit event
