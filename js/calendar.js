@@ -196,8 +196,10 @@ $(document).ready(function () {
             view = view;
             var event_id = calEvent.id;
             var event_title = calEvent.title;
-            var event_start_time = calEvent.start._i.substr(0, 16);
-            var event_end_time = calEvent.end._i;
+            var event_start_time = calEvent.start;
+            event_start_time = event_start_time._i.substr(0, 16);
+            var event_end_time = calEvent.end;
+            event_end_time = event_end_time._i.substr(0, 16);
             $('#edit_delete_event_modal').modal('show');
             // Edit event
             $('#edit_event').click(function (event) {
