@@ -274,7 +274,7 @@ $(document).ready(function () {
 					<input type="datetime-local" id="add_event_start_time" class="form-control" name="start_time" placeholder="Start Time" required>
 					<label for="add_event_end_time">End Time</label>
 					<input type="datetime-local" id="add_event_end_time" class="form-control" name="end_time" placeholder="End Time" required>
-					<input type="hidden" class="token" id="add_event_token" name="token" value="" />
+					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>" />
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-4">
