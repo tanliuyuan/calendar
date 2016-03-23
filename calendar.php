@@ -129,10 +129,10 @@ session_start();
 					<input type="text" id="add_event_title" class="form-control" name="title" placeholder="Title" required>
 					<label for="add_event_start_time">Start Time</label>
 					<input type="text" class="form-control" id="add_event_start_time" name="start_time" data-field="datetime" readonly required>
-					<div class="datetime"></div>
+					<div class="add_datetime"></div>
 					<label for="add_event_end_time">End Time</label>
 					<input type="text" class="form-control" id="add_event_end_time" name="end_time" data-field="datetime" readonly required>
-					<div class="datetime"></div>
+					<div class="add_datetime"></div>
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
 				</div>
 				<div class="row">
@@ -182,10 +182,10 @@ session_start();
 					<input type="text" id="edit_event_title" class="form-control" name="title" placeholder="Title" required>
 					<label for="edit_event_start_time">Start Time</label>
 					<input type="text" class="form-control" id="edit_event_start_time" name="start_time" data-field="datetime" readonly required>
-					<div class="datetime"></div>
+					<div class="edit_datetime"></div>
 					<label for="edit_event_end_time">End Time</label>
 					<input type="text" class="form-control" id="edit_event_end_time" name="end_time" data-field="datetime" readonly required>
-					<div class="datetime"></div>
+					<div class="edit_datetime"></div>
 					<input type="hidden" class="token" id="edit_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
 				</div>
 				<div class="row">

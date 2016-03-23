@@ -1,7 +1,10 @@
 $(document).ready(function () {
     "use strict";
     // Initialize date/time picker for event start and end times
-    $('.datetime').datetimepicker({
+    $('.add_datetime').datetimepicker({
+        dateTimeFormat: 'yyyy-MM-dd hh:mm'
+    });
+    $('.edit_datetime').datetimepicker({
         dateTimeFormat: 'yyyy-MM-dd hh:mm'
     });
     // Log in with AJAX
@@ -151,7 +154,7 @@ $(document).ready(function () {
         }
         // Send event info via AJAX
         $.post('server/edit_event.php', {
-        	id: $("#edit_event_id").val(),
+            id: $("#edit_event_id").val(),
             title: $("#edit_event_title").val(),
             start_time: $("#edit_event_start_time").val(),
             end_time: $("#edit_event_end_time").val(),
