@@ -167,5 +167,37 @@ session_start();
 	</div>
 </div>
 <!-- END Edit/delete event options -->
+
+<!-- Edit event form -->
+<div class="container modal fade" id="edit_event_modal">
+	<div class="modal-content col-md-6 col-md-offset-3">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+		</div>
+		<div class="modal-body">
+			<form id="edit_event_form" action="#" method="post">
+				<div class="form-group">
+					<label for="edit_event_title">Title</label>
+					<input type="text" id="edit_event_title" class="form-control" name="title" placeholder="Title" required>
+					<label for="edit_event_start_time">Start Time</label>
+					<input type="text" class="form-control" id="edit_event_start_time" name="start_time" data-field="datetime" readonly required>
+					<div class="datetime"></div>
+					<label for="edit_event_end_time">End Time</label>
+					<input type="text" class="form-control" id="edit_event_end_time" name="end_time" data-field="datetime" readonly required>
+					<div class="datetime"></div>
+					<input type="hidden" class="token" id="edit_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<button id="edit_event_submit" class="btn btn-lg btn-primary center-block" type="submit">Edit Event</button>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+      		</div>
+		</div>
+	</div>
+</div>
+<!-- END Edit event form -->
 </body>
 </html>
