@@ -168,7 +168,7 @@ session_start();
 </div>
 <!-- END Edit/delete event options -->
 
-<!-- Edit event form 
+<!-- Edit event form -->
 <div class="container modal fade" id="edit_event_modal">
 	<div class="modal-content col-md-6 col-md-offset-3">
 		<div class="modal-header">
@@ -198,7 +198,7 @@ session_start();
       		</div>
 		</div>
 	</div>
-</div>-->
+</div>
 <!-- END Edit event form -->
 </body>
 </html>
