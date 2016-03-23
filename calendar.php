@@ -170,16 +170,6 @@ $(document).ready(function () {
             alert("AJAX request failed: " + err.responseJSON.error);
         });
     });
-    // Delete event
-    $('#delete_event').click(function (event) {
-        event.preventDefault();
-        $.post('server/delete_event.php', {
-            id: event_id
-        }).success(function () {
-            // Refetch user events from database
-            $('#calendar').fullCalendar('refetchEvents');
-        });
-    });
     // Initialize calendar with options
     $('#calendar').fullCalendar({
         events: {
@@ -195,6 +185,16 @@ $(document).ready(function () {
             var event_start_time = calEvent.start;
             var event_end_time = calEvent.end;
             $('#edit_delete_event_modal').modal('show');
+            // Delete event
+            $('#delete_event').click(function (event) {
+                event.preventDefault();
+                $.post('server/delete_event.php', {
+                    id: event_id
+                }).success(function () {
+                // Refetch user events from database
+                    $('#calendar').fullCalendar('refetchEvents');
+                });
+            });
         },
         aspectRatio: 1.78,
         fixedWeekCount: false
