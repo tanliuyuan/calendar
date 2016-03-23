@@ -304,7 +304,7 @@ $(document).ready(function () {
 		</div>
 		<div class="modal-body">
 			<div class="row">
-				<div class="col-md-6 col-centered">
+				<div class="col-md-6 col-md-offset-3">
 					<button id="edit_event" class="btn btn-lg btn-primary" type="button">Edit Event</button>
 					<button id="delete_event" class="btn btn-lg btn-primary" type="button">Delete Event</button>
 				</div>
