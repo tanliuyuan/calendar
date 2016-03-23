@@ -3,6 +3,18 @@ $(document).ready(function () {
     // Log in with AJAX
     $('#login').click(function (event) {
         event.preventDefault();
+        var usernameRegEx = /^[A-Za-z0-9_\-]{3,16}$/;
+        var passwordRegEx = /^[A-Za-z0-9_\-]{6,18}$/;
+        if (!usernameRegEx.test($('#username').val())) {
+            alert('Your username is not valid. A valid username is between 3 to 16 characters. Only characters A-Z, a-z, 0-9, "-", and "_" are  acceptable.');
+            $('#username').focus();
+            return;
+        }
+        if (!passwordRegEx.test($('#password').val())) {
+            alert('Your password is not valid. A valid last name is between 6 to 18 characters. Only characters A-Z, a-z, "_", and "-" are  acceptable.');
+            $('#password').focus();
+            return;
+        }
         // Send login info via AJAX
         $.post("server/login.php", {
             username: $("#username").val(),
