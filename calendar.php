@@ -197,7 +197,7 @@ $(document).ready(function () {
                     // Refetch user events from database
                     $('#calendar').fullCalendar('refetchEvents');
                 }).fail(function (err) {
-                    alert("AJAX request failed: " + err.responseJSON.error);
+                    alert("AJAX request failed: " + err);
                 });
             });
         },
