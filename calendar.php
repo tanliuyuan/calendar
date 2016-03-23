@@ -254,7 +254,7 @@ $(document).ready(function () {
 					<input type="password" id="confirm_password" class="form-control" placeholder="Confirm Password" required>
 				</div>
 				<div class="row">
-					<div class="col-md-6 col-md-offset-4">
+					<div class="col-md-6 center-block">
 						<button id="signup_submit" class="btn btn-lg btn-primary" type="submit">Sign up</button>
 					</div>
 				</div>
@@ -284,7 +284,7 @@ $(document).ready(function () {
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>" />
 				</div>
 				<div class="row">
-					<div class="col-md-6 col-md-offset-4">
+					<div class="col-md-6 center-block">
 						<button id="add_event_submit" class="btn btn-lg btn-primary" type="submit">Add Event</button>
 					</div>
 				</div>
@@ -304,7 +304,7 @@ $(document).ready(function () {
 		</div>
 		<div class="modal-body">
 			<div class="row">
-				<div class="col-centered">
+				<div class="center-block">
 					<button id="edit_event" class="btn btn-primary" type="button">Edit Event</button>
 					<button id="delete_event" class="btn btn-primary" type="button">Delete Event</button>
 				</div>
