@@ -180,7 +180,8 @@ $(document).ready(function () {
             }
         },
         eventClick: function (calEvent, jsEvent, view) {
-            undefined(jsEvent, view);
+            jsEvent = jsEvent;
+            view = view;
             var event_id = calEvent.id;
             $('#edit_delete_event_modal').modal('show');
             // Delete event
