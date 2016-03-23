@@ -305,10 +305,8 @@ $(document).ready(function () {
 		<div class="modal-body">
 			<div class="row">
 				<div class="block-center">
-					<div  class="block-center">
-						<button id="edit_event" class="btn btn-lg btn-primary" type="button">Edit Event</button>
-						<button id="delete_event" class="btn btn-lg btn-primary" type="button">Delete Event</button>
-					</div>
+					<button id="edit_event" class="btn btn-lg btn-primary" type="button">Edit Event</button>
+					<button id="delete_event" class="btn btn-lg btn-primary" type="button">Delete Event</button>
 				</div>
 			</div>
 			<div class="modal-footer">
