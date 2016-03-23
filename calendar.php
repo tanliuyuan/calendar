@@ -52,6 +52,8 @@ $(document).ready(function () {
             $('#user_first_name').html(data.user_first_name);
             $('#user_last_name').html(data.user_last_name);
             $('#user_info').show();
+            // Set CSRF token
+            $('.token').val(data.token);
             // Display user events
             $('#calendar').fullCalendar('refetchEvents');
         }).fail(function (err) {
@@ -68,7 +70,7 @@ $(document).ready(function () {
         event.preventDefault();
         // Validate user inputs
         var usernameRegEx = /^[A-Za-z0-9_\-]{3,16}$/;
-        var nameRegEx = /[A-Za-z\ \'\-]{1,50}/;
+        var nameRegEx = /^[A-Za-z\ \'\-]{1,50}$/;
         var passwordRegEx = /^[A-Za-z0-9_\-]{6,18}$/;
         if (!usernameRegEx.test($('#signup_username').val())) {
             alert('Your username is not valid. A valid username is between 3 to 16 characters. Only characters A-Z, a-z, 0-9, "-", and "_" are  acceptable.');
@@ -90,7 +92,7 @@ $(document).ready(function () {
             $('#signup_password').focus();
             return;
         }
-        if ($("#signup_password").val() !== $("#confirm_password").val()) {
+        if ($('#signup_password').val() !== $('#confirm_password').val()) {
             alert('Passwords don\'t match. Please try again!');
             $('#signup_password').focus();
             return;
@@ -108,10 +110,12 @@ $(document).ready(function () {
             }
             $('#signup_modal').modal('hide');
             // After successful login, hide login form and display user info
-            $("#login_form").hide();
+            $('#login_form').hide();
             $('#user_first_name').html(data.user_first_name);
             $('#user_last_name').html(data.user_last_name);
             $('#user_info').show();
+            // Set CSRF token
+            $('.token').val(data.token);
             // Display user events
             $('#calendar').fullCalendar('refetchEvents');
         }).fail(function (err) {
@@ -119,7 +123,7 @@ $(document).ready(function () {
         });
     });
     // Logout
-    $("#logout").click(function (event) {
+    $('#logout').click(function (event) {
         event.preventDefault();
         $.get('server/logout.php').done(function () {
             // Once logged out, hide and clear user info, and bring back login form
@@ -127,8 +131,43 @@ $(document).ready(function () {
             $('#user_first_name').html('');
             $('#user_last_name').html('');
             $("#login_form").show();
+            // Clear CSRF token
+            $('.token').val('');
             // Clear all events
             $('#calendar').fullCalendar('refetchEvents');
+        });
+    });
+    // Bring up add event form
+    $('#add_event').click(function (event) {
+        event.preventDefault();
+        $('#add_event_modal').modal('show');
+    }
+    // Add event
+    $('#add_event_form').submit(function (event) {
+        event.preventDefault();
+        // Validate user inputs
+        var titleRegEx = /^[A-Za-z\ \'\-]{1,50}$/;
+        if (!titleRegex.test($('#add_event_title').val())) {
+            alert('Your title is not valid. A valid title is between 1 to 50 characters. Only characters A-Z, a-z, "\'", "-", and " " are  acceptable.');
+            $('#add_event_title').focus();
+            return;
+        }
+        // Send event info via AJAX
+        $.post("server/add_event.php", {
+            title: $("#add_event_title").val(),
+            start_time: $("#add_event_start_time").val(),
+            end_time: $("#add_event_end_time").val(),
+            token: $("#add_event_token").val()
+        }).success(function (data) {
+            if (data.error) {
+                alert("Error:" + data.error);
+                return;
+            }
+            $('#add_event_modal').modal('hide');
+            // Refetch user events from database
+            $('#calendar').fullCalendar('refetchEvents');
+        }).fail(function (err) {
+            alert("AJAX request failed: " + err.responseJSON.error);
         });
     });
     // Initialize calendar
@@ -166,7 +205,12 @@ $(document).ready(function () {
 		<!-- User info -->
 		<div class="navbar-right" id="user_info">
         	<h4>Welcome Back, <span id="user_first_name"><?php echo(isset($_SESSION['user_first_name'])?$_SESSION['user_first_name']:'')?></span> <span id="user_last_name"><?php echo(isset($_SESSION['user_last_name'])?$_SESSION['user_last_name']:"");?></span></h4>
-        	<a href="#" class="row navbar-right" id="logout">Log out</a>
+        	<div class="row navbar-right">
+        		<button type="button" class="btn btn-default" id="add_event">
+  					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Event
+				</button>
+        		<a href="#" id="logout">Log out</a>
+        	</div>
         </div>
 		<?php
 		// If user is logged in and session is set, hide login form, otherwise hide user info
@@ -213,6 +257,36 @@ $(document).ready(function () {
 		</div>
 	</div>
 </div>
-<!-- END signup form -->
+<!-- END Signup form -->
+
+<!-- Add event form -->
+<div class="container modal fade" id="add_event_modal">
+	<div class="modal-content col-md-6 col-md-offset-3">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+		</div>
+		<div class="modal-body">
+			<form id="add_event_form" action="#" method="post">
+				<div class="form-group">
+					<label for="add_event_title">Title</label>
+					<input type="text" id="add_event_title" class="form-control" name="title" placeholder="Title" required>
+					<label for="add_event_start_time">Start Time</label>
+					<input type="datetime-local" id="add_event_start_time" class="form-control" name="start_time" placeholder="Start Time" required>
+					<label for="add_event_end_time">End Time</label>
+					<input type="datetime-local" id="add_event_end_time" class="form-control" name="end_time" placeholder="End Time" required>
+					<input type="hidden" class="token" id="add_event_token" name="token" value="" />
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-md-offset-4">
+						<button id="add_event_submit" class="btn btn-lg btn-primary" type="submit">Add Event</button>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+      		</div>
+		</div>
+	</div>
+</div>
+<!-- END Add event form -->
 </body>
 </html>
