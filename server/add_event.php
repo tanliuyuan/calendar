@@ -19,7 +19,7 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 		if(!empty($_POST['start_time']))
 			$start_time = preg_match('/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/', $_POST['start_time']) ? $_POST['start_time'] : "";
 		if(empty($start_time))
-			returnError('Error while adding event: Start time not valid');
+			returnError('Error while adding event: Start time not valid'.$_POST['start_time']);
 		if(!empty($_POST['end_time']))
 			$end_time = preg_match('/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/', $_POST['end_time']) ? $_POST['end_time'] : "";
 		if(empty($end_time))
