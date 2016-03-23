@@ -112,7 +112,7 @@
 	
 	padding: 0.5em 0.5em 1em 1em;
 	
-	color: #428bca;
+	color: #FFFFFF;
 	font-size: 1.5em;
 	
 	cursor: pointer;
@@ -126,7 +126,7 @@
 .dtpicker-header .dtpicker-value
 {
 	padding:  0.8em 0.2em 0.2em 0.2em;
-	color: #428bca;
+	color: #FFFFFF;
 	text-align: center;
 
 	font-size: 1.4em;
