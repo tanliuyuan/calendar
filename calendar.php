@@ -33,12 +33,12 @@ session_start();
 <!-- END FullCalendar -->
 
 <!-- Date/time picker -->
-<!-- Credit: http://xdsoft.net/jqplugins/datetimepicker/ -->
-<script src="js/jquery.datetimepicker.full.min.js"></script>
+<!-- Credit: http://curioussolutions.github.io/DateTimePicker/ -->
+<script src="js/DateTimePicker.js"></script>
 <!-- END Date/time picker -->
 
 <!-- My own JS functions -->
-<script src="js/DateTimePicker.js"></script>
+<script src="js/calendar.js"></script>
 <!-- END My own JS functions -->
 </head>
 
