@@ -35,6 +35,7 @@ session_start();
 <!-- Date/time picker -->
 <!-- Credit: http://curioussolutions.github.io/DateTimePicker/ -->
 <script src="js/DateTimePicker.js"></script>
+<link rel="stylesheet" type="text/css" href="css/DateTimePicker.css">
 <!-- END Date/time picker -->
 
 <!-- My own JS functions -->
