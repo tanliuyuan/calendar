@@ -188,7 +188,8 @@ $(document).ready(function () {
             $('#delete_event').click(function (event) {
                 event.preventDefault();
                 $.post('server/delete_event.php', {
-                    id: event_id
+                    id: event_id,
+                    token: $("#add_event_token").val()
                 }).success(function (data) {
                     if (data.error) {
                         alert("Error:" + data.error);
