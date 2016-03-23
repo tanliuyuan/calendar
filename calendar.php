@@ -38,7 +38,7 @@ session_start();
 <!-- END Date/time picker -->
 
 <!-- My own JS functions -->
-<script src="js/calendar.js"></script>
+<script src="js/DateTimePicker.js"></script>
 <!-- END My own JS functions -->
 </head>
 
@@ -127,9 +127,11 @@ session_start();
 					<label for="add_event_title">Title</label>
 					<input type="text" id="add_event_title" class="form-control" name="title" placeholder="Title" required>
 					<label for="add_event_start_time">Start Time</label>
-					<input type="text" class="form-control datetime" id="add_event_start_time" name="start_time" required>
+					<input type="text" class="form-control" id="add_event_start_time" name="start_time" data-field="datetime" readonly required>
+					<div class="datetime"></div>
 					<label for="add_event_end_time">End Time</label>
-					<input type="text" class="form-control datetime" id="add_event_end_time" name="end_time" required>
+					<input type="text" class="form-control" id="add_event_end_time" name="end_time" data-field="datetime" readonly required>
+					<div class="datetime"></div>
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
 				</div>
 				<div class="row">
