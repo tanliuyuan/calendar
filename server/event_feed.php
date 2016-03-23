@@ -9,7 +9,7 @@ $eventsArray = array();
 
 // Fetch events from currently logged in user
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['username'])) {
-	$stmt = $mysqli->prepare("SELECT events.title, events.start_time, events.end_time FROM events INNER JOIN users ON events.creator=users.username WHERE users.username=?") 
+	$stmt = $mysqli->prepare("SELECT events.id, events.title, events.start_time, events.end_time FROM events INNER JOIN users ON events.creator=users.username WHERE users.username=?") 
 		or returnError('Query Prep Failed: '.htmlspecialchars($mysqli->error));
 	$stmt->bind_param('s', $_SESSION['username']) 
 		or returnError('Parameter Binding Failed: '.htmlspecialchars($mysqli->error));
@@ -19,6 +19,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['u
 		or returnError('Result Getting Failed: '.htmlspecialchars($mysqli->error));
 	while($row = $result->fetch_assoc()) {
 		$event = array(
+			'id' => $row['id'],
 			'title' => $row['title'],
 			'start' => $row['start_time'],
 			'end' => $row['end_time']

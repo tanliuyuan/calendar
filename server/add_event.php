@@ -13,7 +13,7 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 		else
 			returnError('Error while adding event: No user is logged in!');
 		if(!empty($_POST['title']))
-			$title = preg_match('/^[A-Za-z \'-]{1,50}$/', $_POST['title']) ? $_POST['title'] : "";
+			$title = preg_match('/^[A-Za-z.\ \'\-]{1,50}$/', $_POST['title']) ? $_POST['title'] : "";
 		if(empty($title))
 			returnError('Error while adding event: Title not valid');
 		if(!empty($_POST['start_time']))

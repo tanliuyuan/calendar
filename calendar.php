@@ -26,12 +26,6 @@ session_start();
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <!-- END Bootstrap -->
 
-<!-- Datepicker -->
-<!-- Credit: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-<script src="https://raw.githubusercontent.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css">
-<!-- END Datepicker -->
-
 <!-- FullCalendar -->
 <!-- Credit: fullcalendar.io -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.js"></script>
@@ -158,7 +152,6 @@ $(document).ready(function () {
             $('#add_event_title').focus();
             return;
         }
-        console.log($("#add_event_start_time").val());
         // Send event info via AJAX
         $.post("server/add_event.php", {
             title: $("#add_event_title").val(),
@@ -177,7 +170,7 @@ $(document).ready(function () {
             alert("AJAX request failed: " + err.responseJSON.error);
         });
     });
-    // Initialize calendar
+    // Initialize calendar with options
     $('#calendar').fullCalendar({
         events: {
             url: 'server/event_feed.php',
@@ -186,6 +179,13 @@ $(document).ready(function () {
                 alert('There was an error while fetching events!');
             }
         },
+        eventClick: function(calEvent, jsEvent, view) {
+            var event_id = calEvent.id;
+            var event_title = calEvent.title;
+            var event_start_time = calEvent.start;
+            var event_end_time = calEvent.end;
+            $('#edit_delete_event_modal').modal('show');
+        }
         aspectRatio: 1.78,
         fixedWeekCount: false
     });
@@ -213,7 +213,7 @@ $(document).ready(function () {
 		<div class="navbar-right" id="user_info">
         	<h4>Welcome Back, <span id="user_first_name"><?php echo(isset($_SESSION['user_first_name'])?$_SESSION['user_first_name']:'')?></span> <span id="user_last_name"><?php echo(isset($_SESSION['user_last_name'])?$_SESSION['user_last_name']:"");?></span></h4>
         	<div class="row navbar-right">
-        		<button type="button" class="btn btn-default" id="add_event">
+        		<button type="button" class="btn btn-sm btn-default" id="add_event">
   					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Event
 				</button>
         		<a href="#" id="logout">Log out</a>
@@ -278,9 +278,9 @@ $(document).ready(function () {
 					<label for="add_event_title">Title</label>
 					<input type="text" id="add_event_title" class="form-control" name="title" placeholder="Title" required>
 					<label for="add_event_start_time">Start Time</label>
-					<input type="datetime-local" id="add_event_start_time" class="form-control" name="start_time" placeholder="Start Time" required>
+					<input type="datetime-local" id="add_event_start_time" class="form-control" name="start_time" required>
 					<label for="add_event_end_time">End Time</label>
-					<input type="datetime-local" id="add_event_end_time" class="form-control" name="end_time" placeholder="End Time" required>
+					<input type="datetime-local" id="add_event_end_time" class="form-control" name="end_time" required>
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>" />
 				</div>
 				<div class="row">
@@ -295,5 +295,27 @@ $(document).ready(function () {
 	</div>
 </div>
 <!-- END Add event form -->
+
+<!-- Edit/delete event options -->
+<div class="container modal fade" id="edit_delete_event_modal">
+	<div class="modal-content col-md-6 col-md-offset-3">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-4">
+					<button id="edit_event" class="btn btn-lg btn-primary" type="button">Edit Event</button>
+				</div>
+				<div class="col-md-6 col-md-offset-4">
+					<button id="delete_event" class="btn btn-lg btn-primary" type="button">Delete Event</button>
+				</div>
+			</div>
+			<div class="modal-footer">
+      		</div>
+		</div>
+	</div>
+</div>
+<!-- END Edit/delete event options -->
 </body>
 </html>
