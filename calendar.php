@@ -153,7 +153,7 @@ $(document).ready(function () {
             return;
         }
         // Send event info via AJAX
-        $.post("server/add_event.php", {
+        $.post('server/add_event.php', {
             title: $("#add_event_title").val(),
             start_time: $("#add_event_start_time").val(),
             end_time: $("#add_event_end_time").val(),
@@ -168,6 +168,16 @@ $(document).ready(function () {
             $('#calendar').fullCalendar('refetchEvents');
         }).fail(function (err) {
             alert("AJAX request failed: " + err.responseJSON.error);
+        });
+    });
+    // Delete event
+    $('#delete_event').click(function (event) {
+        event.preventDefault();
+        $.post('server/delete_event.php', {
+            id: event_id
+        }).success(function () {
+            // Refetch user events from database
+            $('#calendar').fullCalendar('refetchEvents');
         });
     });
     // Initialize calendar with options
