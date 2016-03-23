@@ -185,7 +185,7 @@ $(document).ready(function () {
             var event_start_time = calEvent.start;
             var event_end_time = calEvent.end;
             $('#edit_delete_event_modal').modal('show');
-        }
+        },
         aspectRatio: 1.78,
         fixedWeekCount: false
     });
