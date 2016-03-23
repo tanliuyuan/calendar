@@ -26,6 +26,12 @@ session_start();
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <!-- END Bootstrap -->
 
+<!-- Datepicker -->
+<!-- Credit: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+<script src="https://raw.githubusercontent.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css">
+<!-- END Datepicker -->
+
 <!-- FullCalendar -->
 <!-- Credit: fullcalendar.io -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.js"></script>
@@ -152,6 +158,7 @@ $(document).ready(function () {
             $('#add_event_title').focus();
             return;
         }
+        console.log($("#add_event_start_time").val());
         // Send event info via AJAX
         $.post("server/add_event.php", {
             title: $("#add_event_title").val(),
