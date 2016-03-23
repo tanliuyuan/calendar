@@ -179,11 +179,9 @@ $(document).ready(function () {
                 alert('There was an error while fetching events!');
             }
         },
-        eventClick: function(calEvent, jsEvent, view) {
+        eventClick: function (calEvent, jsEvent, view) {
+            undefined(jsEvent, view);
             var event_id = calEvent.id;
-            var event_title = calEvent.title;
-            var event_start_time = calEvent.start;
-            var event_end_time = calEvent.end;
             $('#edit_delete_event_modal').modal('show');
             // Delete event
             $('#delete_event').click(function (event) {
@@ -193,6 +191,8 @@ $(document).ready(function () {
                 }).success(function () {
                 // Refetch user events from database
                     $('#calendar').fullCalendar('refetchEvents');
+                }).fail(function (err) {
+                    alert("AJAX request failed: " + err.responseJSON.error);
                 });
             });
         },
