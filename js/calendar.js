@@ -196,9 +196,8 @@ $(document).ready(function () {
             view = view;
             var event_id = calEvent.id;
             var event_title = calEvent.title;
-            var event_start_time = calEvent.start;
-            console.log(event_start_time._i.substr(0, 16));
-            var event_end_time = calEvent.end;
+            var event_start_time = calEvent.start._i.substr(0, 16);
+            var event_end_time = calEvent.end._i.substr(0, 16);
             $('#edit_delete_event_modal').modal('show');
             // Edit event
             $('#edit_event').click(function (event) {
@@ -214,8 +213,8 @@ $(document).ready(function () {
                 // Load current event info
                 $("#edit_event_id").val(event_id);
                 $("#edit_event_title").val(event_title);
-                $("#edit_event_start_time").val(event_start_time.substr(4, 20));
-                $("#edit_event_end_time").val(event_end_time.substr(4, 20));
+                $("#edit_event_start_time").val(event_start_time);
+                $("#edit_event_end_time").val(event_end_time);
             });
             // Delete event
             $('#delete_event').click(function (event) {
