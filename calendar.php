@@ -297,7 +297,7 @@ $(document).ready(function () {
 <!-- END Add event form -->
 
 <!-- Edit/delete event options -->
-<div class="container modal fade" id="edit_delete_event_modal">
+<div class="container modal fade row" id="edit_delete_event_modal">
 	<div class="modal-content col-md-1 col-md-offset-10">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
