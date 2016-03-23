@@ -141,7 +141,7 @@ $(document).ready(function () {
     $('#add_event').click(function (event) {
         event.preventDefault();
         $('#add_event_modal').modal('show');
-    }
+    });
     // Add event
     $('#add_event_form').submit(function (event) {
         event.preventDefault();
