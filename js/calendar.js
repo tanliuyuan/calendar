@@ -188,15 +188,15 @@ $(document).ready(function () {
             $('#edit_delete_event_modal').modal('show');
             // Edit event
             $('#edit_event').click(function (event) {
-            	event.preventDefault();
-            	// Dismiss edit/delete options
+                event.preventDefault();
+                // Dismiss edit/delete options
                 $('#edit_delete_event_modal').modal('hide');
                 // Bring up edit event form
                 $('#edit_event_modal').modal('show');
                 // Load current event info
-                $("#edit_event_title").val(event_title),
-                $("#edit_event_start_time").val(event_start_time),
-                $("#edit_event_end_time").val(event_end_time),
+                $("#edit_event_title").val(event_title);
+                $("#edit_event_start_time").val(event_start_time);
+                $("#edit_event_end_time").val(event_end_time);
             });
             // Delete event
             $('#delete_event').click(function (event) {
