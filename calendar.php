@@ -303,7 +303,7 @@ $(document).ready(function () {
 			<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
 		</div>
 		<div class="modal-body">
-			<div class="row">
+			<div class="col-md-4 col-md-offset-4">
 				<div class="block-center">
 					<button id="edit_event" class="btn btn-lg btn-primary" type="button">Edit Event</button>
 					<button id="delete_event" class="btn btn-lg btn-primary" type="button">Delete Event</button>
