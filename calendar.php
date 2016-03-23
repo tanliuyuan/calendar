@@ -127,10 +127,10 @@ session_start();
 					<label for="add_event_title">Title</label>
 					<input type="text" id="add_event_title" class="form-control" name="title" placeholder="Title" required>
 					<label for="add_event_start_time">Start Time</label>
-					<input type="text" class="datetime" id="add_event_start_time" data-format="DD-MM-YYYY h:mm a" data-template="DD/MM/YYYY hh:mm a" name="start_time" required>
+					<input type="text" class="form-control datetime" id="add_event_start_time" data-format="DD-MM-YYYY h:mm a" data-template="DD/MM/YYYY hh:mm a" name="start_time" required>
 					<label for="add_event_end_time">End Time</label>
-					<input type="text" class="datetime" id="add_event_end_time" data-format="DD-MM-YYYY h:mm a" data-template="DD/MM/YYYY hh:mm a" name="end_time" required>
-					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>" />
+					<input type="text" class="form-control datetime" id="add_event_end_time" data-format="DD-MM-YYYY h:mm a" data-template="DD/MM/YYYY hh:mm a" name="end_time" required>
+					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
