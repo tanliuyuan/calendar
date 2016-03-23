@@ -32,6 +32,12 @@ session_start();
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.css">
 <!-- END FullCalendar -->
 
+<!-- Datetimepicker -->
+<!-- Credit: http://eonasdan.github.io/bootstrap-datetimepicker/ -->
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+<!-- END Datetimepicker -->
+
 <!-- My own JS functions -->
 <script src="js/calendar.js"></script>
 <!-- END My own JS functions -->
@@ -122,9 +128,9 @@ session_start();
 					<label for="add_event_title">Title</label>
 					<input type="text" id="add_event_title" class="form-control" name="title" placeholder="Title" required>
 					<label for="add_event_start_time">Start Time</label>
-					<input type="datetime-local" id="add_event_start_time" class="form-control" name="start_time" required>
+            		<input type='text' class="form-control datetime" id="add_event_start_time" name="start_time" required>
 					<label for="add_event_end_time">End Time</label>
-					<input type="datetime-local" id="add_event_end_time" class="form-control" name="end_time" required>
+					<input type='text' class="form-control datetime" id="add_event_end_time" name="end_time" required>
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>" />
 				</div>
 				<div class="row">

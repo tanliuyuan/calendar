@@ -1,5 +1,7 @@
 $(document).ready(function () {
     "use strict";
+    // Initialize datetimepicker for event start and end times
+    $('.datetime').datetimepicker();
     // Log in with AJAX
     $('#login').click(function (event) {
         event.preventDefault();
@@ -90,7 +92,7 @@ $(document).ready(function () {
     // Logout
     $('#logout').click(function (event) {
         event.preventDefault();
-        $.get('server/logout.php').done(function () {
+        $.post('server/logout.php').done(function () {
             // Once logged out, hide and clear user info, and bring back login form
             $("#user_info").hide();
             $('#user_first_name').html('');
