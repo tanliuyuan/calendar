@@ -33,9 +33,9 @@ session_start();
 <!-- END FullCalendar -->
 
 <!-- Date/time picker -->
-<!-- Credit: http://curioussolutions.github.io/DateTimePicker/ -->
-<script src="js/DateTimePicker.js"></script>
-<link rel="stylesheet" type="text/css" href="css/DateTimePicker.css">
+<!-- Credit: http://xdsoft.net/jqplugins/datetimepicker/ -->
+<script src="js/jquery.datetimepicker.full.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css">
 <!-- END Date/time picker -->
 
 <!-- My own JS functions -->

@@ -1,7 +1,7 @@
 $(document).ready(function () {
     "use strict";
     // Initialize date/time picker for event start and end times
-    $('.datetime').DateTimePicker({
+    $('.datetime').datetimepicker({
         dateTimeFormat: 'yyyy-MM-dd hh:mm'
     });
     // Log in with AJAX
@@ -128,7 +128,6 @@ $(document).ready(function () {
             end_time: $("#add_event_end_time").val(),
             token: $("#add_event_token").val()
         }).success(function (data) {
-        	console.log(data);
             if (data.error) {
                 alert("Error:" + data.error);
                 return;
