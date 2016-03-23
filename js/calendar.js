@@ -213,8 +213,8 @@ $(document).ready(function () {
                 // Load current event info
                 $("#edit_event_id").val(event_id);
                 $("#edit_event_title").val(event_title);
-                $("#edit_event_start_time").val(event_start_time);
-                $("#edit_event_end_time").val(event_end_time);
+                $("#edit_event_start_time").val(event_start_time.substring(4, 20));
+                $("#edit_event_end_time").val(event_end_time.substring(4, 20));
             });
             // Delete event
             $('#delete_event').click(function (event) {
