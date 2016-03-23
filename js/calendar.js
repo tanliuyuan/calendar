@@ -1,9 +1,5 @@
 $(document).ready(function () {
     "use strict";
-    // Initialize date/time picker for event start and end times
-    $('.datetime').datetimepicker({
-        dateTimeFormat: 'yyyy-MM-dd hh:mm'
-    });
     // Log in with AJAX
     $('#login').click(function (event) {
         event.preventDefault();
@@ -110,6 +106,10 @@ $(document).ready(function () {
     $('#add_event').click(function (event) {
         event.preventDefault();
         $('#add_event_modal').modal('show');
+        // Activate date/time picker for event start and end times
+        $('.add_event_datetime').datetimepicker({
+            dateTimeFormat: 'yyyy-MM-dd hh:mm'
+        });
     });
     // Add event
     $('#add_event_form').submit(function (event) {
@@ -166,9 +166,9 @@ $(document).ready(function () {
         }).fail(function (err) {
             alert("AJAX request failed: " + err.responseJSON.error);
         });
+        // Dismiss edit event form
+        $('#edit_event_modal').modal('hide');
     });
-    // Dismiss edit event form
-    $('#edit_event_modal').modal('hide');
     // Initialize calendar with options
     $('#calendar').fullCalendar({
         events: {
@@ -194,6 +194,10 @@ $(document).ready(function () {
                 $('#edit_delete_event_modal').modal('hide');
                 // Bring up edit event form
                 $('#edit_event_modal').modal('show');
+                // Activate date/time picker for event start and end times
+                $('.edit_event_datetime').datetimepicker({
+                    dateTimeFormat: 'yyyy-MM-dd hh:mm'
+                });
                 // Load current event info
                 $("#edit_event_id").val(event_id);
                 $("#edit_event_title").val(event_title);
