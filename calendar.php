@@ -32,10 +32,10 @@ session_start();
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.css">
 <!-- END FullCalendar -->
 
-<!-- Combodate: the date/time picker -->
-<!-- Credit: http://www.jqueryrain.com/2016/03/combodate-dropdown-date-and-time-picker/ -->
-<script src="js/combodate.js"></script>
-<!-- END Combodate -->
+<!-- Date/time picker -->
+<!-- Credit: http://xdsoft.net/jqplugins/datetimepicker/ -->
+<script src="js/jquery.datetimepicker.full.min.js"></script>
+<!-- END Date/time picker -->
 
 <!-- My own JS functions -->
 <script src="js/calendar.js"></script>
@@ -127,9 +127,9 @@ session_start();
 					<label for="add_event_title">Title</label>
 					<input type="text" id="add_event_title" class="form-control" name="title" placeholder="Title" required>
 					<label for="add_event_start_time">Start Time</label>
-					<input type="text" class="form-control datetime" id="add_event_start_time" data-format="DD-MM-YYYY h:mm a" data-template="DD/MM/YYYY hh:mm a" name="start_time" required>
+					<input type="text" class="form-control datetime" id="add_event_start_time" name="start_time" required>
 					<label for="add_event_end_time">End Time</label>
-					<input type="text" class="form-control datetime" id="add_event_end_time" data-format="DD-MM-YYYY h:mm a" data-template="DD/MM/YYYY hh:mm a" name="end_time" required>
+					<input type="text" class="form-control datetime" id="add_event_end_time" name="end_time" required>
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
 				</div>
 				<div class="row">
