@@ -254,8 +254,8 @@ $(document).ready(function () {
 					<input type="password" id="confirm_password" class="form-control" placeholder="Confirm Password" required>
 				</div>
 				<div class="row">
-					<div class="col-md-6 col-md-offset-4">
-						<button id="signup_submit" class="btn btn-lg btn-primary" type="submit">Sign up</button>
+					<div class="col-md-6 col-md-offset-3">
+						<button id="signup_submit" class="btn btn-lg btn-primary center-block" type="submit">Sign up</button>
 					</div>
 				</div>
 			</form>
@@ -284,8 +284,8 @@ $(document).ready(function () {
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>" />
 				</div>
 				<div class="row">
-					<div class="col-md-6 col-md-offset-4">
-						<button id="add_event_submit" class="btn btn-lg btn-primary" type="submit">Add Event</button>
+					<div class="col-md-6 col-md-offset-3">
+						<button id="add_event_submit" class="btn btn-lg btn-primary center-block" type="submit">Add Event</button>
 					</div>
 				</div>
 			</form>
@@ -304,9 +304,9 @@ $(document).ready(function () {
 		</div>
 		<div class="modal-body">
 			<div class="row">
-				<div class="col-md-6 col-md-offset-4">
-					<button id="edit_event" class="btn btn-primary" type="button">Edit Event</button>
-					<button id="delete_event" class="btn btn-primary" type="button">Delete Event</button>
+				<div class="col-md-4 col-md-offset-4">
+					<button id="edit_event" class="btn btn-primary center-block" type="button">Edit Event</button>
+					<button id="delete_event" class="btn btn-primary center-block" type="button">Delete Event</button>
 				</div>
 			</div>
 			<div class="modal-footer">
