@@ -177,6 +177,7 @@ session_start();
 		<div class="modal-body">
 			<form id="edit_event_form" action="#" method="post">
 				<div class="form-group">
+					<input type="hidden" id="edit_event_id" name="id">
 					<label for="edit_event_title">Title</label>
 					<input type="text" id="edit_event_title" class="form-control" name="title" placeholder="Title" required>
 					<label for="edit_event_start_time">Start Time</label>

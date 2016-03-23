@@ -151,6 +151,7 @@ $(document).ready(function () {
         }
         // Send event info via AJAX
         $.post('server/edit_event.php', {
+        	id: $("#edit_event_id").val(),
             title: $("#edit_event_title").val(),
             start_time: $("#edit_event_start_time").val(),
             end_time: $("#edit_event_end_time").val(),
@@ -194,6 +195,7 @@ $(document).ready(function () {
                 // Bring up edit event form
                 $('#edit_event_modal').modal('show');
                 // Load current event info
+                $("#edit_event_id").val(event_id);
                 $("#edit_event_title").val(event_title);
                 $("#edit_event_start_time").val(event_start_time);
                 $("#edit_event_end_time").val(event_end_time);
