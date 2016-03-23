@@ -189,8 +189,12 @@ $(document).ready(function () {
                 event.preventDefault();
                 $.post('server/delete_event.php', {
                     id: event_id
-                }).success(function () {
-                // Refetch user events from database
+                }).success(function (data) {
+                    if (data.error) {
+                        alert("Error:" + data.error);
+                        return;
+                    }
+                    // Refetch user events from database
                     $('#calendar').fullCalendar('refetchEvents');
                 }).fail(function (err) {
                     alert("AJAX request failed: " + err.responseJSON.error);
