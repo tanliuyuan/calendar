@@ -129,10 +129,10 @@ session_start();
 					<input type="text" id="add_event_title" class="form-control" name="title" placeholder="Title" required>
 					<label for="add_event_start_time">Start Time</label>
 					<input type="text" class="form-control" id="add_event_start_time" name="start_time" data-field="datetime" readonly required>
-					<div class="add_datetime"></div>
+					<div class="datetime"></div>
 					<label for="add_event_end_time">End Time</label>
 					<input type="text" class="form-control" id="add_event_end_time" name="end_time" data-field="datetime" readonly required>
-					<div class="add_datetime"></div>
+					<div class="datetime"></div>
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
 				</div>
 				<div class="row">
@@ -168,7 +168,7 @@ session_start();
 </div>
 <!-- END Edit/delete event options -->
 
-<!-- Edit event form -->
+<!-- Edit event form 
 <div class="container modal fade" id="edit_event_modal">
 	<div class="modal-content col-md-6 col-md-offset-3">
 		<div class="modal-header">
@@ -182,10 +182,10 @@ session_start();
 					<input type="text" id="edit_event_title" class="form-control" name="title" placeholder="Title" required>
 					<label for="edit_event_start_time">Start Time</label>
 					<input type="text" class="form-control" id="edit_event_start_time" name="start_time" data-field="datetime" readonly required>
-					<div class="edit_datetime"></div>
+					<div class="datetime"></div>
 					<label for="edit_event_end_time">End Time</label>
 					<input type="text" class="form-control" id="edit_event_end_time" name="end_time" data-field="datetime" readonly required>
-					<div class="edit_datetime"></div>
+					<div class="datetime"></div>
 					<input type="hidden" class="token" id="edit_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
 				</div>
 				<div class="row">
@@ -198,7 +198,7 @@ session_start();
       		</div>
 		</div>
 	</div>
-</div>
+</div>-->
 <!-- END Edit event form -->
 </body>
 </html>

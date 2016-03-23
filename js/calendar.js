@@ -1,10 +1,7 @@
 $(document).ready(function () {
     "use strict";
     // Initialize date/time picker for event start and end times
-    $('.add_datetime').datetimepicker({
-        dateTimeFormat: 'yyyy-MM-dd hh:mm'
-    });
-    $('.edit_datetime').datetimepicker({
+    $('.datetime').datetimepicker({
         dateTimeFormat: 'yyyy-MM-dd hh:mm'
     });
     // Log in with AJAX
