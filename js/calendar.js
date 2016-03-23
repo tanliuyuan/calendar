@@ -2,7 +2,7 @@ $(document).ready(function () {
     "use strict";
     // Initialize date/time picker for event start and end times
     $('.datetime').DateTimePicker({
-        dateTimeFormat: 'yyyy-MM-dd hh:mm'
+        dateTimeFormat: 'yyyy-MM-dd hh:mm AA'
     });
     // Log in with AJAX
     $('#login').click(function (event) {
