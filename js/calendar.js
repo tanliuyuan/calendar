@@ -1,7 +1,7 @@
 $(document).ready(function () {
     "use strict";
-    // Initialize datetimepicker for event start and end times
-    $('.datetime').datetimepicker();
+    // Initialize date/time picker for event start and end times
+    $('.datetime').combodate();
     // Log in with AJAX
     $('#login').click(function (event) {
         event.preventDefault();
