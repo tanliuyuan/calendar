@@ -130,9 +130,21 @@ session_start();
 					<label for="add_event_start_time">Start Time</label>
 					<input type="text" class="form-control" id="add_event_start_time" name="start_time" data-field="datetime" readonly required>
 					<div class="datetime"></div>
+					<script>
+					// Initialize date/time picker for event start and end times
+                    $('.datetime').datetimepicker({
+                        dateTimeFormat: 'yyyy-MM-dd hh:mm'
+                    });
+                    </script>
 					<label for="add_event_end_time">End Time</label>
 					<input type="text" class="form-control" id="add_event_end_time" name="end_time" data-field="datetime" readonly required>
 					<div class="datetime"></div>
+					<script>
+					// Initialize date/time picker for event start and end times
+                    $('.datetime').datetimepicker({
+                        dateTimeFormat: 'yyyy-MM-dd hh:mm'
+                    });
+                    </script>
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
 				</div>
 				<div class="row">
@@ -183,9 +195,21 @@ session_start();
 					<label for="edit_event_start_time">Start Time</label>
 					<input type="text" class="form-control" id="edit_event_start_time" name="start_time" data-field="datetime" readonly required>
 					<div class="datetime"></div>
+					<script>
+					// Initialize date/time picker for event start and end times
+                    $('.datetime').datetimepicker({
+                        dateTimeFormat: 'yyyy-MM-dd hh:mm'
+                    });
+                    </script>
 					<label for="edit_event_end_time">End Time</label>
 					<input type="text" class="form-control" id="edit_event_end_time" name="end_time" data-field="datetime" readonly required>
 					<div class="datetime"></div>
+					<script>
+					// Initialize date/time picker for event start and end times
+                    $('.datetime').datetimepicker({
+                        dateTimeFormat: 'yyyy-MM-dd hh:mm'
+                    });
+                    </script>
 					<input type="hidden" class="token" id="edit_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
 				</div>
 				<div class="row">
