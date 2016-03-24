@@ -223,8 +223,8 @@ $(document).ready(function () {
             // Delete event
             $('#delete_event').click(function (event) {
                 event.preventDefault();
-                $("#edit_event_id").val(event_id);
                 $("#edit_event_id").val('');
+                $("#edit_event_id").val(event_id);
                 $.post('server/delete_event.php', {
                     id: $("#edit_event_id").val(),
                     token: $("#add_event_token").val()
