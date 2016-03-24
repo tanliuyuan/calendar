@@ -5,7 +5,7 @@ session_start();
 require_once('database.php');
 require_once('functions.php');
 
-date_default_timezone_set();
+date_default_timezone_set('America/Chicago');
 
 // Fetch, validate, and assign input data
 if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
