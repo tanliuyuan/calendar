@@ -34,8 +34,6 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 		$datetime_end = new DateTime($end_time);
 		if ($datetime_start < $datetime_end)
 			returnError('An end time that is before the start time? Are you a time traveller?');
-		else
-			returnError('Blah');
 			
 		// Make sure event is created by user
 		$stmt = $mysqli->prepare("SELECT COUNT(*), events.id FROM events INNER JOIN users ON events.creator=users.username WHERE events.creator=? AND events.id=?") 
