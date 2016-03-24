@@ -1,5 +1,10 @@
 $(document).ready(function () {
     "use strict";
+    // Event variables
+    var event_id = '';
+    var event_title = '';
+    var event_start_time = '';
+    var event_end_time = '';
     // Log in with AJAX
     $('#login').click(function (event) {
         event.preventDefault();
@@ -151,6 +156,23 @@ $(document).ready(function () {
             alert("AJAX request failed: " + err.responseJSON.error);
         });
     });
+    // When the Edit Event button is clicked, bring up the edit event form
+    $('#edit_event').click(function (event) {
+        event.preventDefault();
+        // Dismiss edit/delete options
+        $('#edit_delete_event_modal').modal('hide');
+        // Bring up edit event form
+        $('#edit_event_modal').modal('show');
+        // Activate date/time picker for event start and end times
+        $('.edit_event_datetime').datetimepicker({
+            dateTimeFormat: 'yyyy-MM-dd hh:mm'
+        });
+        // Load current event info
+        $("#edit_event_id").val(event_id);
+        $("#edit_event_title").val(event_title);
+        $("#edit_event_start_time").val(event_start_time);
+        $("#edit_event_end_time").val(event_end_time);
+    });
     // Edit event
     $('#edit_event_form').submit(function (event) {
         event.preventDefault();
@@ -181,6 +203,25 @@ $(document).ready(function () {
         // Dismiss edit event form
         $('#edit_event_modal').modal('hide');
     });
+    // Delete event
+    $('#delete_event').click(function (event) {
+        event.preventDefault();
+        $.post('server/delete_event.php', {
+            id: event_id,
+            token: $("#add_event_token").val()
+        }).success(function (data) {
+            if (data.error) {
+                alert("Error:" + data.error);
+                return;
+            }
+            // Refetch user events from database
+            $('#calendar').fullCalendar('refetchEvents');
+        }).fail(function (err) {
+            alert("AJAX request failed: " + err.responseJSON.error);
+        });
+        // Dismiss edit/delete options
+        $('#edit_delete_event_modal').modal('hide');
+    });
     // Initialize calendar with options
     $('#calendar').fullCalendar({
         events: {
@@ -194,49 +235,11 @@ $(document).ready(function () {
         eventClick: function (calEvent, jsEvent, view) {
             jsEvent = jsEvent;
             view = view;
-            var event_id = calEvent.id;
-            var event_title = calEvent.title;
-            var event_start_time = calEvent.start.format('YYYY-MM-DD HH:mm');
-            var event_end_time = calEvent.end.format('YYYY-MM-DD HH:mm');
+            event_id = calEvent.id;
+            event_title = calEvent.title;
+            event_start_time = calEvent.start.format('YYYY-MM-DD HH:mm');
+            event_end_time = calEvent.end.format('YYYY-MM-DD HH:mm');
             $('#edit_delete_event_modal').modal('show');
-            console.log($("#edit_event_id").val());
-            console.log(event_id);
-            // Edit event
-            $('#edit_event').click(function (event) {
-                event.preventDefault();
-                // Dismiss edit/delete options
-                $('#edit_delete_event_modal').modal('hide');
-                // Bring up edit event form
-                $('#edit_event_modal').modal('show');
-                // Activate date/time picker for event start and end times
-                $('.edit_event_datetime').datetimepicker({
-                    dateTimeFormat: 'yyyy-MM-dd hh:mm'
-                });
-                // Load current event info
-                $("#edit_event_id").val(event_id);
-                $("#edit_event_title").val(event_title);
-                $("#edit_event_start_time").val(event_start_time);
-                $("#edit_event_end_time").val(event_end_time);
-            });
-            // Delete event
-            $('#delete_event').click(function (event) {
-                event.preventDefault();
-                $.post('server/delete_event.php', {
-                    id: event_id,
-                    token: $("#add_event_token").val()
-                }).success(function (data) {
-                    if (data.error) {
-                        alert("Error:" + data.error);
-                        return;
-                    }
-                    // Refetch user events from database
-                    $('#calendar').fullCalendar('refetchEvents');
-                }).fail(function (err) {
-                    alert("AJAX request failed: " + err.responseJSON.error);
-                });
-                // Dismiss edit/delete options
-                $('#edit_delete_event_modal').modal('hide');
-            });
         },
         aspectRatio: 1.78,
         fixedWeekCount: false
