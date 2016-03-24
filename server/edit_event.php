@@ -5,6 +5,8 @@ session_start();
 require_once('database.php');
 require_once('functions.php');
 
+date_default_timezone_set();
+
 // Make sure user is logged in and CSRF token is valid
 if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 	if($_SESSION['token'] === $_POST['token']) {
