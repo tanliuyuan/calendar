@@ -29,6 +29,11 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 			$end_time = preg_match('/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})$/', $_POST['end_time']) ? $_POST['end_time'] : "";
 		if(empty($end_time))
 			returnError('Error while editing event: End time not valid');
+		// Make sure end time comes after start time
+		$datetime_start = new DateTime($start_time);
+		$datetime_end = new DateTime($end_time);
+		if ($datetime_start < $datetime_end)
+			returnError('An end time that is before the start time? Are you a time traveller?');
 			
 		// Make sure event is created by user
 		$stmt = $mysqli->prepare("SELECT COUNT(*), events.id FROM events INNER JOIN users ON events.creator=users.username WHERE events.creator=? AND events.id=?") 

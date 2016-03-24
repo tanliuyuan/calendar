@@ -24,6 +24,11 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 			$end_time = preg_match('/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})$/', $_POST['end_time']) ? $_POST['end_time'] : "";
 		if(empty($end_time))
 			returnError('Error while adding event: End time not valid');
+		// Make sure end time comes after start time
+		$datetime_start = new DateTime($start_time);
+		$datetime_end = new DateTime($end_time);
+		if ($datetime_start < $datetime_end)
+			returnError('An end time that is before the start time? Are you a time traveller?');
 
 		// Add new event into database on behalf of the currently logged in user
 		$stmt = $mysqli->prepare("INSERT INTO events (creator, title, start_time, end_time) values (?, ?, ?, ?)") 
