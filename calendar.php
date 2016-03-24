@@ -194,7 +194,7 @@ session_start();
 					<div class="edit_event_datetime"></div>
 					<script>
 					// Initialize date/time picker for event start and end times
-                    $('.datetime').datetimepicker({
+					$('.datetime').datetimepicker({
                         dateTimeFormat: 'yyyy-MM-dd hh:mm'
                     });
                     </script>
