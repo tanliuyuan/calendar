@@ -145,6 +145,7 @@ $(document).ready(function () {
             end_time: $("#add_event_end_time").val(),
             token: $("#add_event_token").val()
         }).success(function (data) {
+        	console.log(data);
             if (data.error) {
                 alert("Error:" + data.error);
                 return;
@@ -191,6 +192,7 @@ $(document).ready(function () {
             end_time: $("#edit_event_end_time").val(),
             token: $("#edit_event_token").val()
         }).success(function (data) {
+        	console.log(data);
             if (data.error) {
                 alert("Error:" + data.error);
                 return;
