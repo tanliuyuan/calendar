@@ -194,6 +194,7 @@ $(document).ready(function () {
         eventClick: function (calEvent, jsEvent, view) {
             jsEvent = jsEvent;
             view = view;
+            console.log(calEvent);
             var event_id = calEvent.id;
             var event_title = calEvent.title;
             var event_start_time = calEvent.start.format('YYYY-MM-DD HH:mm');
