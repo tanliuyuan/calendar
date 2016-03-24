@@ -16,7 +16,7 @@ $(document).ready(function () {
             return;
         }
         if (!passwordRegEx.test($('#password').val())) {
-            alert('Your password is not valid. A valid last name is between 6 to 18 characters. Only characters A-Z, a-z, "_", and "-" are  acceptable.');
+            alert('Your password is not valid. A valid password is between 6 to 18 characters. Only characters A-Z, a-z, "_", and "-" are  acceptable.');
             $('#password').focus();
             return;
         }
@@ -70,7 +70,7 @@ $(document).ready(function () {
             return;
         }
         if (!passwordRegEx.test($('#signup_password').val())) {
-            alert('Your password is not valid. A valid last name is between 6 to 18 characters. Only characters A-Z, a-z, "_", and "-" are  acceptable.');
+            alert('Your password is not valid. A valid password is between 6 to 18 characters. Only characters A-Z, a-z, "_", and "-" are  acceptable.');
             $('#signup_password').focus();
             return;
         }
@@ -145,7 +145,6 @@ $(document).ready(function () {
             end_time: $("#add_event_end_time").val(),
             token: $("#add_event_token").val()
         }).success(function (data) {
-        	console.log(data);
             if (data.error) {
                 alert("Error:" + data.error);
                 return;
@@ -192,7 +191,6 @@ $(document).ready(function () {
             end_time: $("#edit_event_end_time").val(),
             token: $("#edit_event_token").val()
         }).success(function (data) {
-        	console.log(data);
             if (data.error) {
                 alert("Error:" + data.error);
                 return;
