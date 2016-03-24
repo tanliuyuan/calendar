@@ -194,11 +194,14 @@ $(document).ready(function () {
         eventClick: function (calEvent, jsEvent, view) {
             jsEvent = jsEvent;
             view = view;
-            console.log(calEvent);
-            var event_id = calEvent.id;
-            var event_title = calEvent.title;
-            var event_start_time = calEvent.start.format('YYYY-MM-DD HH:mm');
-            var event_end_time = calEvent.end.format('YYYY-MM-DD HH:mm');
+            var event_id = '';
+            var event_title = '';
+            var event_start_time = '';
+            var event_end_time = '';
+            event_id = calEvent.id;
+            event_title = calEvent.title;
+            event_start_time = calEvent.start.format('YYYY-MM-DD HH:mm');
+            event_end_time = calEvent.end.format('YYYY-MM-DD HH:mm');
             $('#edit_delete_event_modal').modal('show');
             // Edit event
             $('#edit_event').click(function (event) {
@@ -212,10 +215,6 @@ $(document).ready(function () {
                     dateTimeFormat: 'yyyy-MM-dd hh:mm'
                 });
                 // Load current event info
-                $("#edit_event_id").val('');
-                $("#edit_event_title").val('');
-                $("#edit_event_start_time").val('');
-                $("#edit_event_end_time").val('');
                 $("#edit_event_id").val(event_id);
                 $("#edit_event_title").val(event_title);
                 $("#edit_event_start_time").val(event_start_time);
