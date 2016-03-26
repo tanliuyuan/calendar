@@ -241,8 +241,8 @@ $(document).ready(function () {
                     $('.public').hide();
                 }
             },
-            hidePublic: {
-                text: 'hide public events',
+            showPublic: {
+                text: 'show public events',
                 click: function() {
                     $('.public').show();
                 }
