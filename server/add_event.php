@@ -15,7 +15,7 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 		else
 			returnError('Error while adding event: No user is logged in!');
 		if(!empty($_POST['title']))
-			$title = preg_match('/^[A-Za-z.\ \'\-]{1,50}$/', $_POST['title']) ? $_POST['title'] : "";
+			$title = preg_match('/^[0-9A-Za-z.\ \'\-]{1,50}$/', $_POST['title']) ? $_POST['title'] : "";
 		if(empty($title))
 			returnError('Error while adding event: Title not valid');
 		if(!empty($_POST['start_time']))
@@ -39,7 +39,7 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 		// Add new event into database on behalf of the currently logged in user
 		$stmt = $mysqli->prepare("INSERT INTO events (creator, title, start_time, end_time, is_public) values (?, ?, ?, ?, ?)") 
 			or returnError('Query Prep Failed: '.htmlspecialchars($mysqli->error));
-		$stmt->bind_param('ssss', $creator, $title, $start_time, $end_time, $is_public) 
+		$stmt->bind_param('ssssd', $creator, $title, $start_time, $end_time, $is_public) 
 			or returnError('Parameter Binding Failed: '.htmlspecialchars($mysqli->error));
 		$stmt->execute() 
 			or returnError('Query Execution Failed: '.htmlspecialchars($mysqli->error));

@@ -132,9 +132,9 @@ $(document).ready(function () {
     $('#add_event_form').submit(function (event) {
         event.preventDefault();
         // Validate user inputs
-        var titleRegEx = /^[A-Za-z.\ \'\-]{1,50}$/;
+        var titleRegEx = /^[A-Za-z0-9_.\ \'\-]{1,50}$/;
         if (!titleRegEx.test($('#add_event_title').val())) {
-            alert('Your title is not valid. A valid title is between 1 to 50 characters. Only characters A-Z, a-z, ".", "\'", "-", and " " are  acceptable.');
+            alert('Your title is not valid. A valid title is between 1 to 50 characters. Only characters A-Z, a-z, 0-9, "_", ".", "\'", "-", and " " are  acceptable.');
             $('#add_event_title').focus();
             return;
         }
@@ -178,9 +178,9 @@ $(document).ready(function () {
     $('#edit_event_form').submit(function (event) {
         event.preventDefault();
         // Validate user inputs
-        var titleRegEx = /^[A-Za-z.\ \'\-]{1,50}$/;
+        var titleRegEx = /^[A-Za-z0-9_.\ \'\-]{1,50}$/;
         if (!titleRegEx.test($('#edit_event_title').val())) {
-            alert('Your title is not valid. A valid title is between 1 to 50 characters. Only characters A-Z, a-z, ".", "\'", "-", and " " are  acceptable.');
+            alert('Your title is not valid. A valid title is between 1 to 50 characters. Only characters A-Z, a-z, 0-9, "_", ".", "\'", "-", and " " are  acceptable.');
             $('#edit_event_title').focus();
             return;
         }
