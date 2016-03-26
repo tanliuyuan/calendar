@@ -29,6 +29,8 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 		// Make sure end time comes after start time
 		if (new DateTime($start_time) > new DateTime($end_time))
 			returnError('An end time that is before the start time? Are you a time traveller?');
+		if (new DateTime($start_time) === new DateTime($end_time))
+			returnError('Start time and end time are the same? You can\'t possibly make it that fast!');
 
 		// Add new event into database on behalf of the currently logged in user
 		$stmt = $mysqli->prepare("INSERT INTO events (creator, title, start_time, end_time) values (?, ?, ?, ?)") 
