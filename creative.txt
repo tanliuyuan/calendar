@@ -7,4 +7,10 @@ Creative Features:
 4. There is a "today" botton for users to quickly go back to the current date.
 5. There are admins and common users. Admins can add/edit/delete public events. Public events can be seen by all logged in users, but can only be modified/deleted by admins, while private events can only be seen by the user who created the event. Public events are displayed in orange on the calendar, while private ones are in blue. 
 6. Users can choose to hide or show public events.
-Admin username: admin, password: password
+
+Login instructions:
+Admin:
+username: admin, password: password
+Common user:
+username: johndoe, password: johndoe
+
