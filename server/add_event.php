@@ -27,7 +27,7 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 		if(empty($end_time))
 			returnError('Error while adding event: End time not valid');
 		// Make sure end time comes after start time
-		if (new DateTime($start_time) >= new DateTime($end_time))
+		if (new DateTime($start_time) > new DateTime($end_time))
 			returnError('An end time that is before the start time? Are you a time traveller?');
 
 		// Add new event into database on behalf of the currently logged in user
