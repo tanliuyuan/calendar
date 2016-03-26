@@ -248,7 +248,6 @@ $(document).ready(function () {
         },
         // When an event is clicked, bring up edit/delete options
         eventClick: function (calEvent, jsEvent, view) {
-            console.log(calEvent);
             jsEvent = jsEvent;
             view = view;
             event_id = calEvent.id;
@@ -256,10 +255,10 @@ $(document).ready(function () {
             event_start_time = calEvent.start.format('YYYY-MM-DD HH:mm');
             event_end_time = calEvent.end.format('YYYY-MM-DD HH:mm');
             // Only admins are allowed to edit and delete public events
-            if (calEvent.className === 'public' && admin_logged_in) {
+            if (calEvent.className[0] === 'public' && admin_logged_in) {
                 $('#edit_delete_event_modal').modal('show');
             }
-            if (calEvent.className === 'private') {
+            if (calEvent.className[0] === 'private') {
                 $('#edit_delete_event_modal').modal('show');
             }
         },
