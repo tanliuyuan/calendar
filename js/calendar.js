@@ -234,10 +234,18 @@ $(document).ready(function () {
     });
     // Initialize calendar with options
     $('#calendar').fullCalendar({
+        customButtons: {
+            hidePublic: {
+                text: 'hide public events',
+                click: function() {
+                    $('.public').hide();
+                }
+            }
+        },
         header: {
             left: 'prev,next today monthView weekView dayView',
             center: 'title',
-            right: 'month,agendaWeek,agendaDay'
+            right: 'month,agendaWeek,agendaDay hidePublic'
         },
         events: {
             url: 'server/event_feed.php',
