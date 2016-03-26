@@ -236,13 +236,13 @@ $(document).ready(function () {
     $('#calendar').fullCalendar({
         customButtons: {
             hidePublic: {
-                text: 'hide public events',
+                text: 'hide public',
                 click: function() {
                     $('.public').hide();
                 }
             },
             showPublic: {
-                text: 'show public events',
+                text: 'show public',
                 click: function() {
                     $('.public').show();
                 }
