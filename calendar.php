@@ -125,7 +125,7 @@ session_start();
 					</div>
 					<?php
 					// If an admin is logged in, show the admin options. Otherwise hide them.
-					if(!isset($_SESSION['admin_logged_in']) || (isset($_SESSION['admin_logged_in'] && $_SESSION['admin_logged_in'] == false)))
+					if(!isset($_SESSION['admin_logged_in']) || (isset($_SESSION['admin_logged_in']) && !$_SESSION['admin_logged_in']))
 						echo('<script>$("#admin_options").hide();</script>');
 					?>
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
