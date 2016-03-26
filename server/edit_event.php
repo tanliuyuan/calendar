@@ -20,7 +20,7 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 		if(empty($id))
 			returnError('Error while deleting event: Can\'t find event id!');
 		if(!empty($_POST['title']))
-			$title = preg_match('/^[A-Za-z.\ \'\-]{1,50}$/', $_POST['title']) ? $_POST['title'] : "";
+			$title = preg_match('/^[A-Za-z0-9.\ \'\-]{1,50}$/', $_POST['title']) ? $_POST['title'] : "";
 		if(empty($title))
 			returnError('Error while editing event: Title not valid');
 		if(!empty($_POST['start_time']))
