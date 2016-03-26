@@ -56,6 +56,7 @@ session_start();
 		// If user is logged in and session is set, hide login form, otherwise hide user info
 		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 			echo('<script>$("#login_form").hide();</script>');
+			echo($_SESSION['admin_logged_in']);
 			if (!isset($_SESSION['admin_logged_in']) || (isset($_SESSION['admin_logged_in']) && !$_SESSION['admin_logged_in']))
 				echo('<script>$("#admin_options").hide();</script>');
 		}	
