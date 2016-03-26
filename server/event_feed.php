@@ -22,15 +22,16 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['u
 			'start' => $row['start_time'],
 			'end' => $row['end_time'],
 			'backgroundColor' => '#FF9009',
+			'borderColor' => '#FF9009'
 		);
 		array_push($eventsArray, $event);
 	}
 	$stmt->close();
 }
 
-// Fetch events from currently logged in user
+// Fetch private events from currently logged in user
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['username'])) {
-	$stmt = $mysqli->prepare("SELECT events.id, events.title, events.start_time, events.end_time FROM events INNER JOIN users ON events.creator=users.username WHERE users.username=?") 
+	$stmt = $mysqli->prepare("SELECT events.id, events.title, events.start_time, events.end_time FROM events INNER JOIN users ON events.creator=users.username WHERE users.username=? AND events.is_public=0") 
 		or returnError('Query Prep Failed: '.htmlspecialchars($mysqli->error));
 	$stmt->bind_param('s', $_SESSION['username']) 
 		or returnError('Parameter Binding Failed: '.htmlspecialchars($mysqli->error));

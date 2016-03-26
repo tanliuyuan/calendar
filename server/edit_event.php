@@ -34,7 +34,7 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 		// Make sure end time comes after start time
 		if (new DateTime($start_time) > new DateTime($end_time))
 			returnError('An end time that is before the start time? Are you a time traveller?');
-		if (new DateTime($start_time) === new DateTime($end_time))
+		if (new DateTime($start_time) == new DateTime($end_time))
 			returnError('Start time and end time are the same? You can\'t possibly make it that fast!');
 			
 		// Make sure event is created by user
