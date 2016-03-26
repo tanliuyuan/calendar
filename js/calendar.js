@@ -40,6 +40,7 @@ $(document).ready(function () {
             $('#calendar').fullCalendar('refetchEvents');
             // If the user is an admin, show admin options
             if (data.admin_logged_in) {
+                alert('admin!');
                 $('#admin_options').show();
             }
         }).fail(function (err) {
