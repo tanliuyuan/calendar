@@ -3,3 +3,4 @@ link to page: http://ec2-54-148-89-241.us-west-2.compute.amazonaws.com/~tanliuyu
 Creative Features:
 1. Bootstrap for better looking UI.
 2. Events have duration, and events that last longer than 24 hours will go across date cells on the calendar.
+3. Users can switch between month, day, and week views.

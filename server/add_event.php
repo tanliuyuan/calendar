@@ -26,6 +26,10 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 			$end_time = preg_match('/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})$/', $_POST['end_time']) ? $_POST['end_time'] : "";
 		if(empty($end_time))
 			returnError('Error while adding event: End time not valid');
+		if(isset($_POST['is_public']) && $_POST['is_public'] == true)
+			$is_public = 1;
+		else
+			$is_public = 0;
 		// Make sure end time comes after start time
 		if (new DateTime($start_time) > new DateTime($end_time))
 			returnError('An end time that is before the start time? Are you a time traveller?');
@@ -33,9 +37,9 @@ if(isset($_POST) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 			returnError('Start time and end time are the same? You can\'t possibly make it that fast!');
 
 		// Add new event into database on behalf of the currently logged in user
-		$stmt = $mysqli->prepare("INSERT INTO events (creator, title, start_time, end_time) values (?, ?, ?, ?)") 
+		$stmt = $mysqli->prepare("INSERT INTO events (creator, title, start_time, end_time, is_public) values (?, ?, ?, ?, ?)") 
 			or returnError('Query Prep Failed: '.htmlspecialchars($mysqli->error));
-		$stmt->bind_param('ssss', $creator, $title, $start_time, $end_time) 
+		$stmt->bind_param('ssss', $creator, $title, $start_time, $end_time, $is_public) 
 			or returnError('Parameter Binding Failed: '.htmlspecialchars($mysqli->error));
 		$stmt->execute() 
 			or returnError('Query Execution Failed: '.htmlspecialchars($mysqli->error));

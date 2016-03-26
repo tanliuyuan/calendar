@@ -143,6 +143,7 @@ $(document).ready(function () {
             title: $("#add_event_title").val(),
             start_time: $("#add_event_start_time").val(),
             end_time: $("#add_event_end_time").val(),
+            is_public: $("#is_public").val(),
             token: $("#add_event_token").val()
         }).success(function (data) {
             if (data.error) {

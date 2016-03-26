@@ -54,8 +54,11 @@ session_start();
         </div>
 		<?php
 		// If user is logged in and session is set, hide login form, otherwise hide user info
-		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'])
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 			echo('<script>$("#login_form").hide();</script>');
+			if (!isset($_SESSION['admin_logged_in']) || (isset($_SESSION['admin_logged_in']) && !$_SESSION['admin_logged_in']))
+				echo('<script>$("#admin_options").hide();</script>');
+		}	
         else
         	echo('<script>$("#user_info").hide();</script>');
         ?>
@@ -116,6 +119,13 @@ session_start();
 					<label for="add_event_end_time">End Time</label>
 					<input type="text" class="form-control" id="add_event_end_time" name="end_time" data-field="datetime" readonly required>
 					<div class="add_event_datetime"></div>
+					<div id="admin_options">
+						<label for="is_public">Is this a public event?</label>
+						<select class="form-control" name="is_public" id="is_public">
+  							<option value="0" selected="selected">No</option>
+  							<option value="1">Yes</option>
+						</select>
+					</div>
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
 				</div>
 				<div class="row">
