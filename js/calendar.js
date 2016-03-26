@@ -248,6 +248,7 @@ $(document).ready(function () {
         },
         // When an event is clicked, bring up edit/delete options
         eventClick: function (calEvent, jsEvent, view) {
+            console.log(calEvent);
             jsEvent = jsEvent;
             view = view;
             event_id = calEvent.id;
