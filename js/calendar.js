@@ -240,12 +240,18 @@ $(document).ready(function () {
                 click: function() {
                     $('.public').hide();
                 }
+            },
+            hidePublic: {
+                text: 'hide public events',
+                click: function() {
+                    $('.public').show();
+                }
             }
         },
         header: {
             left: 'prev,next today monthView weekView dayView',
             center: 'title',
-            right: 'month,agendaWeek,agendaDay hidePublic'
+            right: 'month,agendaWeek,agendaDay hidePublic,showPublic'
         },
         events: {
             url: 'server/event_feed.php',
