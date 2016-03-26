@@ -1,10 +1,11 @@
 $(document).ready(function () {
     "use strict";
-    // global variables
+    // Global variables
     var event_id = '';
     var event_title = '';
     var event_start_time = '';
     var event_end_time = '';
+    var admin_logged_in = 0;
     // Log in with AJAX
     $('#login').click(function (event) {
         event.preventDefault();
@@ -39,7 +40,8 @@ $(document).ready(function () {
             // Display user events
             $('#calendar').fullCalendar('refetchEvents');
             // If the user is an admin, show admin options
-            if (data.admin_logged_in) {
+            admin_logged_in = data.admin_logged_in;
+            if (admin_logged_in) {
                 $('#admin_options').show();
             }
         }).fail(function (err) {
@@ -123,6 +125,7 @@ $(document).ready(function () {
             $('#calendar').fullCalendar('refetchEvents');
             // Hide admin options
             $('#admin_options').hide();
+            admin_logged_in = 0;
         });
     });
     // Bring up add event form
@@ -251,7 +254,13 @@ $(document).ready(function () {
             event_title = calEvent.title;
             event_start_time = calEvent.start.format('YYYY-MM-DD HH:mm');
             event_end_time = calEvent.end.format('YYYY-MM-DD HH:mm');
-            $('#edit_delete_event_modal').modal('show');
+            // Only admins are allowed to edit and delete public events
+            if (calEvent.className === 'public' && admin_logged_in) {
+                $('#edit_delete_event_modal').modal('show');
+            }
+            if (calEvent.className === 'private') {
+                $('#edit_delete_event_modal').modal('show');
+            }
         },
         aspectRatio: 1.78,
         fixedWeekCount: false

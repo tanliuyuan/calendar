@@ -21,6 +21,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['u
 			'title' => $row['title'],
 			'start' => $row['start_time'],
 			'end' => $row['end_time'],
+			'className' => 'public',
 			'backgroundColor' => '#FF9009',
 			'borderColor' => '#FF9009'
 		);
@@ -44,7 +45,8 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['u
 			'id' => $row['id'],
 			'title' => $row['title'],
 			'start' => $row['start_time'],
-			'end' => $row['end_time']
+			'end' => $row['end_time'],
+			'className' => 'private'
 		);
 		array_push($eventsArray, $event);
 	}
