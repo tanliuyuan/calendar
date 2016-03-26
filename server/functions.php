@@ -40,7 +40,8 @@ function login($username, $password) {
 			'success' => true, 
 			'token' => htmlentities($_SESSION['token']), 
 			'user_first_name' => htmlentities($user_first_name), 
-			'user_last_name' => htmlentities($user_last_name)
+			'user_last_name' => htmlentities($user_last_name),
+			'is_admin' => $is_admin
 		);
 		returnSuccess($JSONArray);
 	}else{

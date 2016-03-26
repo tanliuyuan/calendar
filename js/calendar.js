@@ -38,6 +38,10 @@ $(document).ready(function () {
             $('.token').val(data.token);
             // Display user events
             $('#calendar').fullCalendar('refetchEvents');
+            // If the user is an admin, show admin options
+            if (data.admin_logged_in) {
+                $('#admin_options').show();
+            }
         }).fail(function (err) {
             alert("AJAX request failed: " + err.responseJSON.error);
         });

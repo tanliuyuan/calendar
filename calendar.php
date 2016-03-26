@@ -54,12 +54,8 @@ session_start();
         </div>
 		<?php
 		// If user is logged in and session is set, hide login form, otherwise hide user info
-		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'])
 			echo('<script>$("#login_form").hide();</script>');
-			echo($_SESSION['admin_logged_in']);
-			if (!isset($_SESSION['admin_logged_in']) || (isset($_SESSION['admin_logged_in']) && !$_SESSION['admin_logged_in']))
-				echo('<script>$("#admin_options").hide();</script>');
-		}	
         else
         	echo('<script>$("#user_info").hide();</script>');
         ?>
@@ -127,6 +123,11 @@ session_start();
   							<option value="1">Yes</option>
 						</select>
 					</div>
+					<?php
+					// If an admin is logged in, show the admin options. Otherwise hide them.
+					if(!isset($_SESSION['admin_logged_in']) || (isset($_SESSION['admin_logged_in'] && !$_SESSION['admin_logged_in'])))
+						echo('<script>$("#admin_options").hide();</script>');
+					?>
 					<input type="hidden" class="token" id="add_event_token" name="token" value="<?php echo(isset($_SESSION['token'])?$_SESSION['token']:'')?>">
 				</div>
 				<div class="row">
