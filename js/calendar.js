@@ -1,6 +1,6 @@
 $(document).ready(function () {
     "use strict";
-    // Event variables
+    // global variables
     var event_id = '';
     var event_title = '';
     var event_start_time = '';
@@ -40,7 +40,6 @@ $(document).ready(function () {
             $('#calendar').fullCalendar('refetchEvents');
             // If the user is an admin, show admin options
             if (data.admin_logged_in) {
-                alert('admin!');
                 $('#admin_options').show();
             }
         }).fail(function (err) {
@@ -122,6 +121,8 @@ $(document).ready(function () {
             $('.token').val('');
             // Clear all events
             $('#calendar').fullCalendar('refetchEvents');
+            // Hide admin options
+            $('#admin_options').hide();
         });
     });
     // Bring up add event form

@@ -41,7 +41,7 @@ function login($username, $password) {
 			'token' => htmlentities($_SESSION['token']), 
 			'user_first_name' => htmlentities($user_first_name), 
 			'user_last_name' => htmlentities($user_last_name),
-			'is_admin' => $is_admin
+			'admin_logged_in' => $is_admin
 		);
 		returnSuccess($JSONArray);
 	}else{
