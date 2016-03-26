@@ -224,6 +224,11 @@ $(document).ready(function () {
     });
     // Initialize calendar with options
     $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today monthView weekView dayView',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
         events: {
             url: 'server/event_feed.php',
             type: 'POST',
