@@ -237,13 +237,13 @@ $(document).ready(function () {
         customButtons: {
             hidePublic: {
                 text: 'hide public',
-                click: function() {
+                click: function () {
                     $('.public').hide();
                 }
             },
             showPublic: {
                 text: 'show public',
-                click: function() {
+                click: function () {
                     $('.public').show();
                 }
             }
